@@ -1,0 +1,1506 @@
+<!DOCTYPE html>
+<html lang="ms">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>IHA GROUP Services | Insurans, Takaful & Pelaburan</title>
+  <meta name="description" content="Perkhidmatan insurans kenderaan, takaful, pelaburan emas & perak, dan pengurusan harta pusaka yang profesional di Malaysia." />
+
+  <!-- Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600;700;900&family=DM+Sans:wght@300;400;500;600&family=DM+Mono:wght@400;500&display=swap" rel="stylesheet" />
+
+  <!-- Icons -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" />
+
+  <!-- AOS Animation -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/aos/2.3.4/aos.css" />
+
+  <style>
+    /* ===== ROOT VARIABLES ===== */
+    :root {
+      --gold: #C9A84C;
+      --gold-light: #E8C96A;
+      --gold-dark: #A07830;
+      --navy: #0A1628;
+      --navy-mid: #112240;
+      --navy-light: #1A3460;
+      --slate: #1E2D4A;
+      --white: #FFFFFF;
+      --off-white: #F8F6F1;
+      --cream: #F2EDE3;
+      --text-dark: #0D1B2A;
+      --text-muted: #6B7A8D;
+      --text-light: #A8B4C0;
+      --border: rgba(201,168,76,0.25);
+      --shadow-lg: 0 20px 60px rgba(0,0,0,0.25);
+      --shadow-gold: 0 8px 32px rgba(201,168,76,0.3);
+      --radius: 12px;
+      --radius-lg: 20px;
+      --transition: all 0.35s cubic-bezier(0.4,0,0.2,1);
+    }
+
+    /* ===== RESET ===== */
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    html { scroll-behavior: smooth; font-size: 16px; }
+    body { font-family: 'DM Sans', sans-serif; background: var(--white); color: var(--text-dark); overflow-x: hidden; }
+    a { text-decoration: none; color: inherit; }
+    img { max-width: 100%; display: block; }
+    ul { list-style: none; }
+
+    /* ===== SCROLLBAR ===== */
+    ::-webkit-scrollbar { width: 6px; }
+    ::-webkit-scrollbar-track { background: var(--navy); }
+    ::-webkit-scrollbar-thumb { background: var(--gold); border-radius: 3px; }
+
+    /* ===== UTILITY ===== */
+    .container { max-width: 1240px; margin: 0 auto; padding: 0 24px; }
+    .section-tag { display: inline-flex; align-items: center; gap: 8px; font-family: 'DM Mono', monospace; font-size: 11px; font-weight: 500; color: var(--gold); text-transform: uppercase; letter-spacing: 3px; margin-bottom: 16px; }
+    .section-tag::before { content: ''; width: 24px; height: 1px; background: var(--gold); }
+    .section-title { font-family: 'Playfair Display', serif; font-size: clamp(2rem, 4vw, 3rem); font-weight: 700; line-height: 1.15; color: var(--navy); }
+    .section-title span { color: var(--gold); }
+    .btn { display: inline-flex; align-items: center; gap: 10px; padding: 14px 28px; border-radius: 8px; font-family: 'DM Sans', sans-serif; font-weight: 600; font-size: 14px; cursor: pointer; transition: var(--transition); border: none; }
+    .btn-primary { background: var(--gold); color: var(--navy); }
+    .btn-primary:hover { background: var(--gold-light); transform: translateY(-2px); box-shadow: var(--shadow-gold); }
+    .btn-outline { background: transparent; color: var(--white); border: 1.5px solid rgba(255,255,255,0.4); }
+    .btn-outline:hover { background: rgba(255,255,255,0.1); border-color: var(--gold); color: var(--gold); }
+    .btn-dark { background: var(--navy); color: var(--white); }
+    .btn-dark:hover { background: var(--navy-light); transform: translateY(-2px); }
+    .gold-line { width: 60px; height: 3px; background: linear-gradient(90deg, var(--gold), var(--gold-light)); border-radius: 2px; margin: 16px 0 28px; }
+
+    /* ===== TOP BAR ===== */
+    .topbar { background: var(--navy); padding: 10px 0; border-bottom: 1px solid rgba(201,168,76,0.2); }
+    .topbar .container { display: flex; justify-content: space-between; align-items: center; gap: 16px; flex-wrap: wrap; }
+    .topbar-left { display: flex; gap: 24px; flex-wrap: wrap; }
+    .topbar-item { display: flex; align-items: center; gap: 7px; font-size: 12.5px; color: var(--text-light); }
+    .topbar-item i { color: var(--gold); font-size: 11px; }
+    .topbar-right { display: flex; gap: 12px; align-items: center; }
+    .social-btn { width: 28px; height: 28px; border-radius: 50%; background: rgba(201,168,76,0.1); border: 1px solid var(--border); display: flex; align-items: center; justify-content: center; color: var(--gold); font-size: 11px; transition: var(--transition); }
+    .social-btn:hover { background: var(--gold); color: var(--navy); }
+    .topbar-lang { font-size: 12px; color: var(--gold); font-weight: 600; cursor: pointer; border: 1px solid var(--border); padding: 3px 10px; border-radius: 4px; transition: var(--transition); }
+    .topbar-lang:hover { background: var(--gold); color: var(--navy); }
+
+    /* ===== NAVBAR ===== */
+    .navbar { position: sticky; top: 0; z-index: 1000; background: var(--white); box-shadow: 0 2px 20px rgba(0,0,0,0.08); transition: var(--transition); }
+    .navbar.scrolled { box-shadow: 0 4px 30px rgba(0,0,0,0.15); }
+    .navbar .container { display: flex; align-items: center; justify-content: space-between; height: 72px; gap: 24px; }
+    .logo { display: flex; align-items: center; gap: 12px; }
+    .logo-icon { width: 44px; height: 44px; background: linear-gradient(135deg, var(--navy), var(--navy-light)); border-radius: 10px; display: flex; align-items: center; justify-content: center; position: relative; }
+    .logo-icon::after { content: ''; position: absolute; inset: 2px; border-radius: 8px; border: 1px solid var(--gold); opacity: 0.6; }
+    .logo-icon i { color: var(--gold); font-size: 20px; }
+    .logo-text .brand { font-family: 'Playfair Display', serif; font-size: 20px; font-weight: 700; color: var(--navy); line-height: 1; }
+    .logo-text .sub { font-size: 10px; color: var(--text-muted); letter-spacing: 2px; text-transform: uppercase; }
+    .nav-menu { display: flex; align-items: center; gap: 4px; }
+    .nav-item { position: relative; }
+    .nav-link { display: flex; align-items: center; gap: 5px; padding: 10px 14px; font-size: 14px; font-weight: 500; color: var(--text-dark); border-radius: 8px; transition: var(--transition); white-space: nowrap; }
+    .nav-link:hover, .nav-link.active { color: var(--gold); background: rgba(201,168,76,0.07); }
+    .nav-link i { font-size: 10px; transition: var(--transition); }
+    .nav-item:hover .nav-link i { transform: rotate(180deg); }
+
+    /* Dropdown */
+    .dropdown { position: absolute; top: calc(100% + 8px); left: 0; background: var(--white); border: 1px solid rgba(0,0,0,0.08); border-radius: var(--radius); box-shadow: 0 16px 40px rgba(0,0,0,0.12); min-width: 220px; opacity: 0; visibility: hidden; transform: translateY(8px); transition: var(--transition); z-index: 100; overflow: hidden; }
+    .nav-item:hover .dropdown { opacity: 1; visibility: visible; transform: translateY(0); }
+    .dropdown-header { padding: 12px 16px 8px; font-size: 10px; font-weight: 600; color: var(--gold); text-transform: uppercase; letter-spacing: 2px; border-bottom: 1px solid var(--cream); }
+    .dropdown-item { display: flex; align-items: center; gap: 10px; padding: 11px 16px; font-size: 13.5px; color: var(--text-dark); transition: var(--transition); }
+    .dropdown-item:hover { background: var(--off-white); color: var(--gold); padding-left: 20px; }
+    .dropdown-item i { width: 18px; color: var(--gold); font-size: 13px; }
+    .dropdown-item .badge { margin-left: auto; font-size: 10px; background: var(--gold); color: var(--navy); padding: 2px 7px; border-radius: 4px; font-weight: 600; }
+
+    .nav-cta { background: var(--gold); color: var(--navy) !important; font-weight: 700 !important; border-radius: 8px !important; }
+    .nav-cta:hover { background: var(--gold-light) !important; color: var(--navy) !important; }
+    .hamburger { display: none; flex-direction: column; gap: 5px; cursor: pointer; padding: 6px; }
+    .hamburger span { width: 24px; height: 2px; background: var(--navy); border-radius: 2px; transition: var(--transition); }
+
+    /* ===== HERO ===== */
+    .hero { position: relative; min-height: 90vh; display: flex; align-items: center; background: var(--navy); overflow: hidden; }
+    .hero-bg { position: absolute; inset: 0; background: linear-gradient(135deg, var(--navy) 0%, var(--navy-mid) 40%, var(--navy-light) 100%); }
+    .hero-pattern { position: absolute; inset: 0; opacity: 0.04; background-image: repeating-linear-gradient(0deg, transparent, transparent 40px, rgba(201,168,76,0.5) 40px, rgba(201,168,76,0.5) 41px), repeating-linear-gradient(90deg, transparent, transparent 40px, rgba(201,168,76,0.5) 40px, rgba(201,168,76,0.5) 41px); }
+    .hero-orb { position: absolute; border-radius: 50%; filter: blur(80px); pointer-events: none; }
+    .hero-orb-1 { width: 500px; height: 500px; background: radial-gradient(circle, rgba(201,168,76,0.18), transparent); top: -100px; right: -100px; animation: float 8s ease-in-out infinite; }
+    .hero-orb-2 { width: 300px; height: 300px; background: radial-gradient(circle, rgba(26,52,96,0.6), transparent); bottom: 50px; left: 10%; animation: float 10s ease-in-out infinite reverse; }
+    @keyframes float { 0%,100%{transform:translateY(0)} 50%{transform:translateY(-30px)} }
+
+    .hero .container { position: relative; z-index: 2; display: grid; grid-template-columns: 1fr 1fr; gap: 64px; align-items: center; padding-top: 60px; padding-bottom: 60px; }
+    .hero-badge { display: inline-flex; align-items: center; gap: 8px; background: rgba(201,168,76,0.12); border: 1px solid rgba(201,168,76,0.3); color: var(--gold); font-size: 12px; font-weight: 600; letter-spacing: 2px; text-transform: uppercase; padding: 7px 16px; border-radius: 40px; margin-bottom: 24px; }
+    .hero-badge i { font-size: 11px; }
+    .hero-title { font-family: 'Playfair Display', serif; font-size: clamp(2.4rem, 5vw, 3.8rem); font-weight: 900; line-height: 1.1; color: var(--white); margin-bottom: 20px; }
+    .hero-title .accent { color: var(--gold); display: block; }
+    .hero-desc { font-size: 16px; line-height: 1.75; color: rgba(255,255,255,0.7); margin-bottom: 36px; max-width: 500px; }
+    .hero-btns { display: flex; gap: 14px; flex-wrap: wrap; margin-bottom: 48px; }
+    .hero-stats { display: grid; grid-template-columns: repeat(3,1fr); gap: 1px; background: rgba(255,255,255,0.1); border-radius: var(--radius); overflow: hidden; }
+    .hero-stat { background: rgba(255,255,255,0.04); padding: 20px 16px; text-align: center; backdrop-filter: blur(4px); }
+    .hero-stat .num { font-family: 'Playfair Display', serif; font-size: 2rem; font-weight: 700; color: var(--gold); line-height: 1; }
+    .hero-stat .label { font-size: 11px; color: rgba(255,255,255,0.5); margin-top: 4px; text-transform: uppercase; letter-spacing: 1px; }
+
+    /* Hero right - card stack */
+    .hero-cards { display: flex; flex-direction: column; gap: 16px; }
+    .hero-card { background: rgba(255,255,255,0.06); backdrop-filter: blur(12px); border: 1px solid rgba(255,255,255,0.1); border-radius: var(--radius); padding: 20px 24px; display: flex; align-items: center; gap: 16px; transition: var(--transition); cursor: default; }
+    .hero-card:hover { background: rgba(255,255,255,0.1); border-color: rgba(201,168,76,0.3); transform: translateX(-4px); }
+    .hero-card-icon { width: 48px; height: 48px; border-radius: 10px; background: linear-gradient(135deg, var(--gold-dark), var(--gold)); display: flex; align-items: center; justify-content: center; flex-shrink: 0; }
+    .hero-card-icon i { color: var(--navy); font-size: 18px; }
+    .hero-card-title { font-weight: 600; color: var(--white); font-size: 14px; }
+    .hero-card-sub { font-size: 12px; color: rgba(255,255,255,0.5); margin-top: 2px; }
+    .hero-card-badge { margin-left: auto; }
+    .hero-card-badge span { font-size: 10px; background: rgba(201,168,76,0.2); border: 1px solid var(--gold); color: var(--gold); padding: 3px 8px; border-radius: 4px; white-space: nowrap; }
+
+    /* ===== MARQUEE STRIP ===== */
+    .marquee-strip { background: var(--gold); padding: 12px 0; overflow: hidden; white-space: nowrap; }
+    .marquee-inner { display: inline-flex; gap: 0; animation: marquee 25s linear infinite; }
+    .marquee-item { display: inline-flex; align-items: center; gap: 10px; padding: 0 32px; font-size: 13px; font-weight: 600; color: var(--navy); text-transform: uppercase; letter-spacing: 1px; }
+    .marquee-item i { font-size: 14px; }
+    .marquee-sep { color: var(--navy-light); opacity: 0.4; }
+    @keyframes marquee { 0%{transform:translateX(0)} 100%{transform:translateX(-50%)} }
+
+    /* ===== SECTION COMMON ===== */
+    section { padding: 96px 0; }
+    .section-header { margin-bottom: 56px; }
+    .section-header.center { text-align: center; }
+    .section-header.center .gold-line { margin: 16px auto 28px; }
+
+    /* ===== SERVICES ===== */
+    .services { background: var(--off-white); }
+    .services-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 28px; }
+    .service-card { background: var(--white); border-radius: var(--radius-lg); padding: 36px 32px; border: 1px solid rgba(0,0,0,0.06); transition: var(--transition); position: relative; overflow: hidden; cursor: pointer; }
+    .service-card::before { content: ''; position: absolute; top: 0; left: 0; right: 0; height: 4px; background: linear-gradient(90deg, var(--gold-dark), var(--gold-light)); transform: scaleX(0); transform-origin: left; transition: var(--transition); }
+    .service-card:hover { box-shadow: var(--shadow-lg); transform: translateY(-6px); border-color: transparent; }
+    .service-card:hover::before { transform: scaleX(1); }
+    .service-icon { width: 60px; height: 60px; border-radius: var(--radius); background: linear-gradient(135deg, var(--navy), var(--navy-light)); display: flex; align-items: center; justify-content: center; margin-bottom: 24px; }
+    .service-icon i { color: var(--gold); font-size: 24px; }
+    .service-card h3 { font-family: 'Playfair Display', serif; font-size: 1.25rem; font-weight: 700; color: var(--navy); margin-bottom: 10px; }
+    .service-card p { font-size: 14px; line-height: 1.7; color: var(--text-muted); margin-bottom: 20px; }
+    .service-tags { display: flex; flex-wrap: wrap; gap: 6px; margin-bottom: 20px; }
+    .service-tag { font-size: 11px; padding: 4px 10px; background: var(--off-white); border: 1px solid var(--cream); border-radius: 4px; color: var(--text-muted); font-weight: 500; }
+    .service-link { display: inline-flex; align-items: center; gap: 7px; font-size: 13px; font-weight: 600; color: var(--gold); transition: var(--transition); }
+    .service-link:hover { gap: 12px; }
+
+    /* ===== INSURANS KENDERAAN DETAIL ===== */
+    .insurance-section { background: var(--white); }
+    .insurance-grid { display: grid; grid-template-columns: repeat(3,1fr); gap: 24px; }
+    .insurer-card { border-radius: var(--radius-lg); overflow: hidden; border: 1px solid rgba(0,0,0,0.08); transition: var(--transition); }
+    .insurer-card:hover { box-shadow: var(--shadow-lg); transform: translateY(-4px); }
+    .insurer-header { padding: 28px 28px 20px; position: relative; }
+    .etiqa .insurer-header { background: linear-gradient(135deg, #003087, #0050A0); }
+    .pacific .insurer-header { background: linear-gradient(135deg, #1A1A2E, #16213E); }
+    .zurich .insurer-header { background: linear-gradient(135deg, #003865, #005B8E); }
+    .insurer-logo { display: flex; align-items: center; gap: 12px; margin-bottom: 16px; }
+    .insurer-logo-icon { width: 50px; height: 50px; background: rgba(255,255,255,0.15); border-radius: 10px; display: flex; align-items: center; justify-content: center; }
+    .insurer-logo-icon i { color: var(--white); font-size: 22px; }
+    .insurer-name { font-family: 'Playfair Display', serif; font-size: 1.3rem; color: var(--white); font-weight: 700; }
+    .insurer-tagline { font-size: 12px; color: rgba(255,255,255,0.6); }
+    .insurer-rating { display: flex; gap: 2px; }
+    .insurer-rating i { color: var(--gold); font-size: 12px; }
+    .insurer-body { padding: 24px 28px; }
+    .insurer-features { display: flex; flex-direction: column; gap: 10px; margin-bottom: 20px; }
+    .insurer-feature { display: flex; align-items: flex-start; gap: 10px; font-size: 13.5px; color: var(--text-dark); }
+    .insurer-feature i { color: var(--gold); font-size: 12px; margin-top: 2px; flex-shrink: 0; }
+    .insurer-footer { padding: 16px 28px 24px; border-top: 1px solid var(--cream); display: flex; gap: 10px; }
+    .insurer-btn { flex: 1; padding: 11px; text-align: center; font-size: 13px; font-weight: 600; border-radius: 8px; transition: var(--transition); border: none; cursor: pointer; }
+    .insurer-btn.primary { background: var(--gold); color: var(--navy); }
+    .insurer-btn.primary:hover { background: var(--gold-light); }
+    .insurer-btn.secondary { background: var(--off-white); color: var(--text-dark); border: 1px solid var(--cream); }
+    .insurer-btn.secondary:hover { border-color: var(--gold); color: var(--gold); }
+
+    /* ===== WHY US ===== */
+    .why-us { background: var(--navy); }
+    .why-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 64px; align-items: center; }
+    .why-left .section-title { color: var(--white); }
+    .why-left p { font-size: 15.5px; line-height: 1.8; color: rgba(255,255,255,0.65); margin-bottom: 32px; }
+    .why-list { display: flex; flex-direction: column; gap: 20px; }
+    .why-item { display: flex; align-items: flex-start; gap: 16px; }
+    .why-item-icon { width: 40px; height: 40px; border-radius: 10px; background: rgba(201,168,76,0.15); border: 1px solid rgba(201,168,76,0.3); display: flex; align-items: center; justify-content: center; flex-shrink: 0; }
+    .why-item-icon i { color: var(--gold); font-size: 16px; }
+    .why-item h4 { font-weight: 600; color: var(--white); margin-bottom: 4px; font-size: 14.5px; }
+    .why-item p { font-size: 13.5px; color: rgba(255,255,255,0.55); line-height: 1.6; }
+    .why-right { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; }
+    .stat-card { background: rgba(255,255,255,0.05); border: 1px solid rgba(255,255,255,0.08); border-radius: var(--radius-lg); padding: 28px 24px; text-align: center; backdrop-filter: blur(8px); transition: var(--transition); }
+    .stat-card:hover { background: rgba(201,168,76,0.08); border-color: rgba(201,168,76,0.2); }
+    .stat-card:nth-child(2) { margin-top: 24px; }
+    .stat-card:nth-child(4) { margin-top: 24px; }
+    .stat-num { font-family: 'Playfair Display', serif; font-size: 2.5rem; font-weight: 900; color: var(--gold); }
+    .stat-label { font-size: 12px; color: rgba(255,255,255,0.5); margin-top: 6px; text-transform: uppercase; letter-spacing: 1.5px; }
+    .stat-desc { font-size: 13px; color: rgba(255,255,255,0.4); margin-top: 4px; }
+
+    /* ===== PELABURAN ===== */
+    .investment { background: var(--off-white); }
+    .investment-grid { display: grid; grid-template-columns: 1fr 1.2fr; gap: 64px; align-items: center; }
+    .investment-info .section-desc { font-size: 15px; line-height: 1.8; color: var(--text-muted); margin-bottom: 28px; }
+    .investment-types { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; margin-bottom: 32px; }
+    .invest-type { background: var(--white); border-radius: var(--radius); padding: 20px; border: 1px solid rgba(0,0,0,0.06); transition: var(--transition); }
+    .invest-type:hover { border-color: var(--gold); box-shadow: 0 4px 20px rgba(201,168,76,0.15); }
+    .invest-type i { font-size: 24px; margin-bottom: 10px; }
+    .invest-type.gold-inv i { color: #FFD700; }
+    .invest-type.silver-inv i { color: #A8A9AD; }
+    .invest-type h4 { font-weight: 700; color: var(--navy); font-size: 14px; margin-bottom: 6px; }
+    .invest-type p { font-size: 12.5px; color: var(--text-muted); line-height: 1.6; }
+    .price-ticker { background: var(--navy); border-radius: var(--radius-lg); padding: 28px; }
+    .ticker-header { display: flex; align-items: center; justify-content: space-between; margin-bottom: 20px; }
+    .ticker-title { font-family: 'DM Mono', monospace; font-size: 11px; color: var(--gold); text-transform: uppercase; letter-spacing: 2px; }
+    .ticker-live { display: flex; align-items: center; gap: 6px; font-size: 11px; color: #4CAF50; font-weight: 600; }
+    .ticker-live::before { content: ''; width: 7px; height: 7px; border-radius: 50%; background: #4CAF50; animation: pulse 2s infinite; }
+    @keyframes pulse { 0%,100%{opacity:1} 50%{opacity:0.4} }
+    .ticker-items { display: flex; flex-direction: column; gap: 14px; }
+    .ticker-item { display: flex; align-items: center; justify-content: space-between; padding: 14px 16px; background: rgba(255,255,255,0.05); border-radius: 10px; }
+    .ticker-left { display: flex; align-items: center; gap: 10px; }
+    .ticker-dot { width: 10px; height: 10px; border-radius: 50%; }
+    .ticker-dot.gold { background: var(--gold); }
+    .ticker-dot.silver { background: #C0C0C0; }
+    .ticker-name { font-weight: 600; color: var(--white); font-size: 14px; }
+    .ticker-unit { font-size: 11px; color: rgba(255,255,255,0.4); }
+    .ticker-right { text-align: right; }
+    .ticker-price { font-family: 'DM Mono', monospace; font-weight: 600; color: var(--white); font-size: 15px; }
+    .ticker-change { font-size: 11px; font-weight: 600; }
+    .ticker-change.up { color: #4CAF50; }
+    .ticker-change.down { color: #F44336; }
+
+    /* ===== PUSAKA/HARTA ===== */
+    .pusaka { background: var(--white); }
+    .pusaka-grid { display: grid; grid-template-columns: repeat(3,1fr); gap: 28px; margin-top: 48px; }
+    .pusaka-card { background: var(--off-white); border-radius: var(--radius-lg); padding: 32px 28px; border: 1px solid transparent; transition: var(--transition); position: relative; }
+    .pusaka-card:hover { background: var(--white); border-color: var(--gold); box-shadow: var(--shadow-gold); }
+    .pusaka-step { position: absolute; top: 20px; right: 20px; width: 32px; height: 32px; border-radius: 50%; background: var(--gold); color: var(--navy); font-weight: 800; font-size: 13px; display: flex; align-items: center; justify-content: center; }
+    .pusaka-icon { width: 56px; height: 56px; background: linear-gradient(135deg, var(--navy), var(--navy-light)); border-radius: 14px; display: flex; align-items: center; justify-content: center; margin-bottom: 20px; }
+    .pusaka-icon i { color: var(--gold); font-size: 22px; }
+    .pusaka-card h3 { font-family: 'Playfair Display', serif; font-size: 1.1rem; font-weight: 700; color: var(--navy); margin-bottom: 10px; }
+    .pusaka-card p { font-size: 13.5px; line-height: 1.7; color: var(--text-muted); }
+
+    /* ===== TESTIMONIALS ===== */
+    .testimonials { background: var(--cream); }
+    .testimonials-grid { display: grid; grid-template-columns: repeat(3,1fr); gap: 24px; }
+    .testi-card { background: var(--white); border-radius: var(--radius-lg); padding: 32px 28px; border: 1px solid rgba(0,0,0,0.06); transition: var(--transition); }
+    .testi-card:hover { box-shadow: var(--shadow-lg); transform: translateY(-4px); }
+    .testi-stars { display: flex; gap: 3px; margin-bottom: 16px; }
+    .testi-stars i { color: var(--gold); font-size: 14px; }
+    .testi-text { font-size: 14px; line-height: 1.75; color: var(--text-dark); margin-bottom: 20px; font-style: italic; }
+    .testi-author { display: flex; align-items: center; gap: 12px; }
+    .testi-avatar { width: 44px; height: 44px; border-radius: 50%; background: linear-gradient(135deg, var(--navy), var(--gold)); display: flex; align-items: center; justify-content: center; font-family: 'Playfair Display', serif; font-weight: 700; color: var(--white); font-size: 16px; }
+    .testi-name { font-weight: 600; color: var(--navy); font-size: 14px; }
+    .testi-role { font-size: 12px; color: var(--text-muted); }
+    .testi-service { font-size: 11px; color: var(--gold); font-weight: 600; text-transform: uppercase; letter-spacing: 1px; margin-top: 2px; }
+
+    /* ===== FAQ ===== */
+    .faq { background: var(--white); }
+    .faq-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 48px; }
+    .faq-list { display: flex; flex-direction: column; gap: 12px; }
+    .faq-item { border: 1px solid rgba(0,0,0,0.08); border-radius: var(--radius); overflow: hidden; transition: var(--transition); }
+    .faq-item.open { border-color: var(--gold); }
+    .faq-question { display: flex; align-items: center; justify-content: space-between; padding: 18px 20px; cursor: pointer; font-weight: 600; font-size: 14px; color: var(--navy); gap: 12px; background: var(--white); }
+    .faq-question i { color: var(--gold); transition: var(--transition); flex-shrink: 0; }
+    .faq-item.open .faq-question i { transform: rotate(45deg); }
+    .faq-answer { max-height: 0; overflow: hidden; transition: max-height 0.35s ease; }
+    .faq-item.open .faq-answer { max-height: 200px; }
+    .faq-answer p { padding: 0 20px 18px; font-size: 13.5px; line-height: 1.75; color: var(--text-muted); }
+    .faq-right-card { background: var(--navy); border-radius: var(--radius-lg); padding: 40px; height: fit-content; }
+    .faq-right-card h3 { font-family: 'Playfair Display', serif; font-size: 1.5rem; color: var(--white); margin-bottom: 12px; }
+    .faq-right-card p { font-size: 14px; color: rgba(255,255,255,0.6); line-height: 1.7; margin-bottom: 24px; }
+    .contact-options { display: flex; flex-direction: column; gap: 14px; }
+    .contact-opt { display: flex; align-items: center; gap: 14px; padding: 14px 18px; background: rgba(255,255,255,0.05); border-radius: 10px; transition: var(--transition); border: 1px solid rgba(255,255,255,0.08); }
+    .contact-opt:hover { background: rgba(201,168,76,0.1); border-color: rgba(201,168,76,0.3); }
+    .contact-opt-icon { width: 38px; height: 38px; border-radius: 9px; background: rgba(201,168,76,0.15); display: flex; align-items: center; justify-content: center; flex-shrink: 0; }
+    .contact-opt-icon i { color: var(--gold); font-size: 16px; }
+    .contact-opt-label { font-size: 11px; color: rgba(255,255,255,0.4); text-transform: uppercase; letter-spacing: 1px; }
+    .contact-opt-value { font-size: 14px; font-weight: 600; color: var(--white); }
+
+    /* ===== PARTNERS ===== */
+    .partners { background: var(--off-white); padding: 64px 0; }
+    .partners .section-header { margin-bottom: 40px; }
+    .partners-row { display: flex; align-items: center; justify-content: center; gap: 32px; flex-wrap: wrap; }
+    .partner-logo { display: flex; align-items: center; gap: 10px; padding: 16px 24px; background: var(--white); border-radius: var(--radius); border: 1px solid rgba(0,0,0,0.07); transition: var(--transition); opacity: 0.7; }
+    .partner-logo:hover { opacity: 1; box-shadow: 0 4px 20px rgba(0,0,0,0.08); border-color: var(--gold); transform: translateY(-2px); }
+    .partner-logo i { font-size: 22px; }
+    .partner-logo span { font-weight: 700; font-size: 15px; letter-spacing: 1px; }
+    .partner-etiqa i, .partner-etiqa span { color: #003087; }
+    .partner-pacific i, .partner-pacific span { color: #1A1A2E; }
+    .partner-zurich i, .partner-zurich span { color: #003865; }
+    .partner-sc i, .partner-sc span { color: #C8102E; }
+    .partner-bnm i, .partner-bnm span { color: #2E3F7F; }
+
+    /* ===== CONTACT ===== */
+    .contact { background: var(--navy); }
+    .contact-grid { display: grid; grid-template-columns: 1fr 1.4fr; gap: 64px; align-items: start; }
+    .contact-info .section-title { color: var(--white); }
+    .contact-info p { font-size: 15px; color: rgba(255,255,255,0.6); line-height: 1.8; margin-bottom: 36px; }
+    .contact-details { display: flex; flex-direction: column; gap: 20px; }
+    .contact-detail { display: flex; align-items: flex-start; gap: 16px; }
+    .contact-detail-icon { width: 44px; height: 44px; border-radius: 10px; background: rgba(201,168,76,0.12); border: 1px solid rgba(201,168,76,0.2); display: flex; align-items: center; justify-content: center; flex-shrink: 0; }
+    .contact-detail-icon i { color: var(--gold); font-size: 17px; }
+    .contact-detail-label { font-size: 11px; color: rgba(255,255,255,0.4); text-transform: uppercase; letter-spacing: 1.5px; margin-bottom: 4px; }
+    .contact-detail-value { font-size: 15px; color: var(--white); font-weight: 500; }
+
+    /* Form */
+    .contact-form { background: var(--white); border-radius: var(--radius-lg); padding: 40px; }
+    .form-title { font-family: 'Playfair Display', serif; font-size: 1.4rem; color: var(--navy); margin-bottom: 6px; }
+    .form-sub { font-size: 13.5px; color: var(--text-muted); margin-bottom: 28px; }
+    .form-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; margin-bottom: 16px; }
+    .form-group { display: flex; flex-direction: column; gap: 7px; }
+    .form-group.full { grid-column: 1/-1; }
+    .form-group label { font-size: 12.5px; font-weight: 600; color: var(--navy); text-transform: uppercase; letter-spacing: 0.5px; }
+    .form-group input, .form-group select, .form-group textarea { width: 100%; padding: 12px 16px; border: 1.5px solid rgba(0,0,0,0.1); border-radius: 8px; font-family: 'DM Sans', sans-serif; font-size: 14px; color: var(--text-dark); background: var(--off-white); transition: var(--transition); }
+    .form-group input:focus, .form-group select:focus, .form-group textarea:focus { outline: none; border-color: var(--gold); background: var(--white); box-shadow: 0 0 0 3px rgba(201,168,76,0.1); }
+    .form-group textarea { height: 110px; resize: vertical; }
+    .form-submit { width: 100%; padding: 15px; background: linear-gradient(135deg, var(--gold-dark), var(--gold-light)); color: var(--navy); font-family: 'DM Sans', sans-serif; font-size: 15px; font-weight: 700; border: none; border-radius: 8px; cursor: pointer; transition: var(--transition); margin-top: 8px; }
+    .form-submit:hover { transform: translateY(-2px); box-shadow: var(--shadow-gold); }
+    .form-note { font-size: 11.5px; color: var(--text-muted); text-align: center; margin-top: 12px; }
+
+    /* ===== CTA BANNER ===== */
+    .cta-banner { background: linear-gradient(135deg, var(--gold-dark) 0%, var(--gold) 50%, var(--gold-light) 100%); padding: 72px 0; }
+    .cta-inner { text-align: center; }
+    .cta-inner h2 { font-family: 'Playfair Display', serif; font-size: clamp(1.8rem, 3.5vw, 2.8rem); font-weight: 900; color: var(--navy); margin-bottom: 14px; }
+    .cta-inner p { font-size: 16px; color: rgba(10,22,40,0.7); margin-bottom: 32px; }
+    .cta-btns { display: flex; gap: 16px; justify-content: center; flex-wrap: wrap; }
+    .cta-btn-white { background: var(--navy); color: var(--white); padding: 15px 32px; border-radius: 8px; font-weight: 700; font-size: 15px; transition: var(--transition); }
+    .cta-btn-white:hover { background: var(--navy-light); transform: translateY(-2px); }
+    .cta-btn-ghost { background: transparent; color: var(--navy); border: 2px solid var(--navy); padding: 14px 32px; border-radius: 8px; font-weight: 700; font-size: 15px; transition: var(--transition); }
+    .cta-btn-ghost:hover { background: rgba(10,22,40,0.08); }
+
+    /* ===== FOOTER ===== */
+    .footer { background: #06101E; color: rgba(255,255,255,0.65); }
+    .footer-main { padding: 72px 0 48px; }
+    .footer-grid { display: grid; grid-template-columns: 2fr 1fr 1fr 1fr; gap: 48px; }
+    .footer-brand .logo { margin-bottom: 18px; }
+    .footer-brand .logo-text .brand { color: var(--white); }
+    .footer-brand p { font-size: 13.5px; line-height: 1.75; margin-bottom: 20px; }
+    .footer-socials { display: flex; gap: 10px; }
+    .footer-social { width: 36px; height: 36px; border-radius: 8px; background: rgba(255,255,255,0.06); border: 1px solid rgba(255,255,255,0.08); display: flex; align-items: center; justify-content: center; color: rgba(255,255,255,0.6); font-size: 14px; transition: var(--transition); }
+    .footer-social:hover { background: var(--gold); color: var(--navy); border-color: var(--gold); }
+    .footer-col h4 { font-family: 'DM Sans', sans-serif; font-weight: 700; font-size: 13px; color: var(--white); text-transform: uppercase; letter-spacing: 1.5px; margin-bottom: 18px; padding-bottom: 10px; border-bottom: 1px solid rgba(201,168,76,0.25); }
+    .footer-link { display: flex; align-items: center; gap: 7px; font-size: 13.5px; color: rgba(255,255,255,0.55); margin-bottom: 10px; transition: var(--transition); }
+    .footer-link:hover { color: var(--gold); padding-left: 4px; }
+    .footer-link i { font-size: 10px; color: var(--gold); }
+    .footer-contact-item { display: flex; align-items: flex-start; gap: 10px; font-size: 13px; color: rgba(255,255,255,0.55); margin-bottom: 12px; }
+    .footer-contact-item i { color: var(--gold); margin-top: 2px; font-size: 13px; }
+    .footer-bottom { border-top: 1px solid rgba(255,255,255,0.06); padding: 24px 0; }
+    .footer-bottom-inner { display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 12px; }
+    .footer-copy { font-size: 12.5px; }
+    .footer-bottom-links { display: flex; gap: 20px; }
+    .footer-bottom-link { font-size: 12.5px; color: rgba(255,255,255,0.45); transition: var(--transition); }
+    .footer-bottom-link:hover { color: var(--gold); }
+    .footer-cert { display: flex; align-items: center; gap: 8px; font-size: 11px; color: rgba(255,255,255,0.35); }
+    .footer-cert i { color: var(--gold); }
+
+    /* ===== BACK TO TOP ===== */
+    .back-top { position: fixed; bottom: 28px; right: 28px; width: 44px; height: 44px; background: var(--gold); color: var(--navy); border-radius: 10px; display: flex; align-items: center; justify-content: center; font-size: 16px; cursor: pointer; box-shadow: 0 4px 16px rgba(201,168,76,0.4); transition: var(--transition); opacity: 0; visibility: hidden; z-index: 500; border: none; }
+    .back-top.visible { opacity: 1; visibility: visible; }
+    .back-top:hover { transform: translateY(-3px); box-shadow: 0 8px 24px rgba(201,168,76,0.5); }
+
+    /* ===== WHATSAPP FLOAT ===== */
+    .whatsapp-float { position: fixed; bottom: 84px; right: 28px; z-index: 500; }
+    .whatsapp-float a { display: flex; align-items: center; gap: 10px; background: #25D366; color: var(--white); padding: 12px 16px; border-radius: 40px; font-weight: 600; font-size: 13px; box-shadow: 0 4px 20px rgba(37,211,102,0.4); transition: var(--transition); }
+    .whatsapp-float a:hover { transform: translateY(-2px); box-shadow: 0 8px 28px rgba(37,211,102,0.5); }
+    .whatsapp-float i { font-size: 20px; }
+
+    /* ===== MOBILE NAV ===== */
+    .mobile-nav { display: none; position: fixed; inset: 0; background: var(--white); z-index: 2000; flex-direction: column; padding: 24px; overflow-y: auto; }
+    .mobile-nav.open { display: flex; }
+    .mobile-nav-top { display: flex; justify-content: space-between; align-items: center; margin-bottom: 32px; }
+    .mobile-nav-close { background: none; border: none; font-size: 22px; color: var(--navy); cursor: pointer; }
+    .mobile-nav-items { flex: 1; }
+    .mobile-nav-item { border-bottom: 1px solid var(--cream); }
+    .mobile-nav-link { display: flex; align-items: center; justify-content: space-between; padding: 16px 4px; font-size: 16px; font-weight: 600; color: var(--navy); }
+    .mobile-sub { display: none; padding: 0 0 12px 16px; }
+    .mobile-sub.open { display: block; }
+    .mobile-sub a { display: block; padding: 9px 0; font-size: 14px; color: var(--text-muted); border-bottom: 1px solid var(--cream); }
+    .mobile-cta { margin-top: 28px; }
+
+    /* ===== RESPONSIVE ===== */
+    @media(max-width:1024px) {
+      .hero .container { grid-template-columns: 1fr; gap: 40px; }
+      .hero-cards { grid-template-columns: 1fr; }
+      .why-grid { grid-template-columns: 1fr; }
+      .insurance-grid { grid-template-columns: 1fr; }
+      .contact-grid { grid-template-columns: 1fr; }
+      .footer-grid { grid-template-columns: 1fr 1fr; }
+      .investment-grid { grid-template-columns: 1fr; }
+    }
+    @media(max-width:768px) {
+      .nav-menu { display: none; }
+      .hamburger { display: flex; }
+      .topbar-left { display: none; }
+      .pusaka-grid { grid-template-columns: 1fr; }
+      .testimonials-grid { grid-template-columns: 1fr; }
+      .faq-grid { grid-template-columns: 1fr; }
+      .form-grid { grid-template-columns: 1fr; }
+      .footer-grid { grid-template-columns: 1fr; }
+      .hero-stats { grid-template-columns: 1fr 1fr 1fr; }
+      .why-right { grid-template-columns: 1fr 1fr; }
+      .why-right .stat-card:nth-child(2), .why-right .stat-card:nth-child(4) { margin-top: 0; }
+      .footer-bottom-inner { flex-direction: column; text-align: center; }
+      .investment-types { grid-template-columns: 1fr; }
+    }
+  </style>
+</head>
+<body>
+
+<!-- TOP BAR -->
+<div class="topbar">
+  <div class="container">
+    <div class="topbar-left">
+      <div class="topbar-item"><i class="fas fa-phone"></i> +60 13-720 6979</div>
+      <div class="topbar-item"><i class="fas fa-envelope"></i> ihaagency75@gmail.com</div>
+      <div class="topbar-item"><i class="fas fa-clock"></i> Isnin–Jumaat: 9am – 6pm</div>
+      <div class="topbar-item"><i class="fas fa-clock"></i> Sabtu: 9am - 1pm</div>
+    </div>
+    <div class="topbar-right">
+      <a href="https://www.facebook.com/share/16gsm8nzTY/" class="social-btn"><i class="fab fa-facebook-f"></i></a>
+      <a href="https://www.instagram.com/norhayati_zakariaiha?igsh=MXFmcHc5ZXE2MmZpbw==" class="social-btn"><i class="fab fa-instagram"></i></a>
+      <a href="#" class="social-btn"><i class="fab fa-whatsapp"></i></a>
+      <span class="topbar-lang">BM | EN</span>
+    </div>
+  </div>
+</div>
+
+<!-- NAVBAR -->
+<nav class="navbar" id="navbar">
+  <div class="container">
+    <a href="logoiha.jpg" class="logo">
+      <div class="logo-icon"><i class="fas fa-shield-halved"></i></div>
+      <div class="logo-text">
+        <div class="brand">IHA GROUP </div>
+        <div class="sub">Financial Services</div>
+      </div>
+    </a>
+
+    <ul class="nav-menu">
+      <li class="nav-item"><a href="#" class="nav-link active">Laman Utama</a></li>
+
+      <li class="nav-item">
+        <a href="#insurans" class="nav-link">Insurans & Takaful <i class="fas fa-chevron-down"></i></a>
+        <div class="dropdown">
+          <div class="dropdown-header">Insurans Kenderaan</div>
+          <a class="dropdown-item" href="etiqa.html"><i class="fas fa-car"></i> Etiqa Insurans <span class="badge">Popular</span></a>
+          <a class="dropdown-item" href="pacific.html"><i class="fas fa-car"></i> Pacific & Orient</a>
+          <a class="dropdown-item" href="zurich.html"><i class="fas fa-car"></i> Zurich Insurans</a>
+          <div class="dropdown-header" style="margin-top:4px;">Takaful</div>
+          <a class="dropdown-item" href="#takaful"><i class="fas fa-moon"></i> Takaful Kenderaan</a>
+          <a class="dropdown-item" href="#takaful"><i class="fas fa-heart"></i> Takaful Perubatan</a>
+        </div>
+      </li>
+
+      <li class="nav-item">
+        <a href="#pelaburan" class="nav-link">Pelaburan <i class="fas fa-chevron-down"></i></a>
+        <div class="dropdown">
+          <div class="dropdown-header">Emas & Perak</div>
+          <a class="dropdown-item" href="#pelaburan"><i class="fas fa-coins"></i> Pelaburan Emas</a>
+          <!-- <a class="dropdown-item" href="#pelaburan"><i class="fas fa-circle-dot"></i> Pelaburan Perak</a>
+          <a class="dropdown-item" href="#pelaburan"><i class="fas fa-chart-line"></i> Harga Semasa</a> -->
+        </div>
+      </li>
+
+      <li class="nav-item">
+        <a href="#pusaka" class="nav-link">Harta & Pusaka <i class="fas fa-chevron-down"></i></a>
+        <div class="dropdown">
+          <div class="dropdown-header">Perkhidmatan</div>
+          <a class="dropdown-item" href="#pusaka"><i class="fas fa-file-contract"></i> Wasiat</a>
+          <a class="dropdown-item" href="#pusaka"><i class="fas fa-landmark"></i> Faraid</a>
+          <a class="dropdown-item" href="#pusaka"><i class="fas fa-house"></i> Pengurusan Harta</a>
+          <a class="dropdown-item" href="#pusaka"><i class="fas fa-scroll"></i> Hibah</a>
+        </div>
+      </li>
+
+
+      <li class="nav-item">
+        <a href="marketing.html" class="nav-link">Marketing <i class="fas fa-chevron-down"></i></a>
+      </li>
+
+
+      <li class="nav-item"><a href="#kenapa-kami" class="nav-link">Tentang Kami</a></li>
+      <!-- <li class="nav-item"><a href="#faq" class="nav-link">Soalan Lazim</a></li> -->
+      <li class="nav-item"><a href="https://wa.me/60137206979" class="nav-link nav-cta">Hubungi Kami</a></li>
+    </ul>
+
+    <div class="hamburger" id="hamburger" onclick="openMobileNav()">
+      <span></span><span></span><span></span>
+    </div>
+  </div>
+</nav>
+
+<!-- MOBILE NAV -->
+<div class="mobile-nav" id="mobileNav">
+  <div class="mobile-nav-top">
+    <a href="logoiha.jpg" class="logo">
+      <div class="logo-icon"><i class="fas fa-shield-halved"></i></div>
+      <div class="logo-text">
+        <div class="brand">IHA GROUP</div>
+        <div class="sub">Financial Services</div>
+      </div>
+    </a>
+    <button class="mobile-nav-close" onclick="closeMobileNav()"><i class="fas fa-times"></i></button>
+  </div>
+  <div class="mobile-nav-items">
+    <div class="mobile-nav-item"><a class="mobile-nav-link" href="#" onclick="closeMobileNav()">Laman Utama</a></div>
+    <div class="mobile-nav-item">
+      <div class="mobile-nav-link" onclick="toggleMobileSub(this)">Insurans & Takaful <i class="fas fa-chevron-down"></i></div>
+      <div class="mobile-sub">
+        <a href="#insurans" onclick="closeMobileNav()">Etiqa Insurans</a>
+        <a href="#insurans" onclick="closeMobileNav()">Pacific Insurans</a>
+        <a href="#insurans" onclick="closeMobileNav()">Zurich Insurans</a>
+        <a href="#takaful" onclick="closeMobileNav()">Takaful</a>
+      </div>
+    </div>
+    <div class="mobile-nav-item">
+      <div class="mobile-nav-link" onclick="toggleMobileSub(this)">Pelaburan <i class="fas fa-chevron-down"></i></div>
+      <div class="mobile-sub">
+        <a href="#pelaburan" onclick="closeMobileNav()">Pelaburan Emas</a>
+        <a href="#pelaburan" onclick="closeMobileNav()">Pelaburan Perak</a>
+      </div>
+    </div>
+    <div class="mobile-nav-item">
+      <div class="mobile-nav-link" onclick="toggleMobileSub(this)">Harta & Pusaka <i class="fas fa-chevron-down"></i></div>
+      <div class="mobile-sub">
+        <a href="#pusaka" onclick="closeMobileNav()">Wasiat</a>
+        <a href="#pusaka" onclick="closeMobileNav()">Faraid</a>
+        <a href="#pusaka" onclick="closeMobileNav()">Pengurusan Harta</a>
+        <a href="#pusaka" onclick="closeMobileNav()">Hibah</a>
+      </div>
+    </div>
+    <div class="mobile-nav-item"><a class="mobile-nav-link" href="#kenapa-kami" onclick="closeMobileNav()">Tentang Kami</a></div>
+    <div class="mobile-nav-item"><a class="mobile-nav-link" href="#faq" onclick="closeMobileNav()">Soalan Lazim</a></div>
+  </div>
+  <div class="mobile-cta">
+    <a href="https://wa.me/60137206979" class="btn btn-primary" style="width:100%;justify-content:center;" onclick="closeMobileNav()">
+      <i class="fas fa-phone"></i> Hubungi Kami
+    </a>
+  </div>
+</div>
+
+<!-- HERO -->
+<section class="hero" id="utama">
+  <div class="hero-bg"></div>
+  <div class="hero-pattern"></div>
+  <div class="hero-orb hero-orb-1"></div>
+  <div class="hero-orb hero-orb-2"></div>
+
+  <div class="container">
+    <div class="hero-left" data-aos="fade-right" data-aos-duration="800">
+      <div class="hero-badge"><i class="fas fa-certificate"></i> Agen Bertauliah & Berlesen</div>
+      <h1 class="hero-title">
+        Lindungi Masa Depan<br>
+        <span class="accent">Anda Bersama Kami</span>
+      </h1>
+      <p class="hero-desc">Perkhidmatan insurans, takaful, pelaburan emas & perak, serta pengurusan harta pusaka yang komprehensif dan amanah. Kami hadir untuk memastikan keselamatan kewangan anda dan keluarga.</p>
+      <div class="hero-btns">
+        <!-- <a href="#hubungi" class="btn btn-primary"><i class="fas fa-phone"></i> Dapatkan Sebutan Harga</a> -->
+        <a href="#perkhidmatan" class="btn btn-outline"><i class="fas fa-arrow-right"></i> Lihat Perkhidmatan</a>
+      </div>
+      <div class="hero-stats">
+        <div class="hero-stat"><div class="num">500+</div><div class="label">Klien</div></div>
+        <div class="hero-stat"><div class="num">10+</div><div class="label">Tahun Pengalaman</div></div>
+        <div class="hero-stat"><div class="num">3</div><div class="label">Panel Insurans</div></div>
+      </div>
+    </div>
+
+    <div data-aos="fade-left" data-aos-duration="800" data-aos-delay="200">
+      <div class="hero-cards">
+        <div class="hero-card">
+          <div class="hero-card-icon"><i class="fas fa-car"></i></div>
+          <div>
+            <div class="hero-card-title">Insurans Kenderaan</div>
+            <div class="hero-card-sub">Etiqa • Pacific • Zurich</div>
+          </div>
+          <div class="hero-card-badge"><span>3 Panel</span></div>
+        </div>
+        <div class="hero-card">
+          <div class="hero-card-icon"><i class="fas fa-moon"></i></div>
+          <div>
+            <div class="hero-card-title">Takaful Kenderaan</div>
+            <div class="hero-card-sub">Perlindungan patuh syariah</div>
+          </div>
+          <div class="hero-card-badge"><span>Syariah</span></div>
+        </div>
+        <div class="hero-card">
+          <div class="hero-card-icon"><i class="fas fa-coins"></i></div>
+          <div>
+            <div class="hero-card-title">Pelaburan Emas & Perak</div>
+            <div class="hero-card-sub">Lindung nilai & simpanan</div>
+          </div>
+          <div class="hero-card-badge"><span>Selamat</span></div>
+        </div>
+        <div class="hero-card">
+          <div class="hero-card-icon"><i class="fas fa-scroll"></i></div>
+          <div>
+            <div class="hero-card-title">Pengurusan Harta & Pusaka</div>
+            <div class="hero-card-sub">Wasiat, faraid & hibah</div>
+          </div>
+          <div class="hero-card-badge"><span>Pakar</span></div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- MARQUEE -->
+<div class="marquee-strip">
+  <div class="marquee-inner">
+    <div class="marquee-item"><i class="fas fa-shield-halved"></i> Insurans Kenderaan Komprehensif</div>
+    <div class="marquee-item marquee-sep">◆</div>
+    <div class="marquee-item"><i class="fas fa-moon"></i> Takaful Patuh Syariah</div>
+    <div class="marquee-item marquee-sep">◆</div>
+    <div class="marquee-item"><i class="fas fa-coins"></i> Pelaburan Emas & Perak</div>
+    <div class="marquee-item marquee-sep">◆</div>
+    <div class="marquee-item"><i class="fas fa-scroll"></i> Pengurusan Wasiat & Pusaka</div>
+    <div class="marquee-item marquee-sep">◆</div>
+    <div class="marquee-item"><i class="fas fa-certificate"></i> Agen Bertauliah BNM</div>
+    <div class="marquee-item marquee-sep">◆</div>
+    <div class="marquee-item"><i class="fas fa-handshake"></i> Perkhidmatan Sepanjang Tahun</div>
+    <div class="marquee-item marquee-sep">◆</div>
+    <!-- repeat for seamless loop -->
+    <div class="marquee-item"><i class="fas fa-shield-halved"></i> Insurans Kenderaan Komprehensif</div>
+    <div class="marquee-item marquee-sep">◆</div>
+    <div class="marquee-item"><i class="fas fa-moon"></i> Takaful Patuh Syariah</div>
+    <div class="marquee-item marquee-sep">◆</div>
+    <div class="marquee-item"><i class="fas fa-coins"></i> Pelaburan Emas & Perak</div>
+    <div class="marquee-item marquee-sep">◆</div>
+    <div class="marquee-item"><i class="fas fa-scroll"></i> Pengurusan Wasiat & Pusaka</div>
+    <div class="marquee-item marquee-sep">◆</div>
+    <div class="marquee-item"><i class="fas fa-certificate"></i> Agen Bertauliah BNM</div>
+    <div class="marquee-item marquee-sep">◆</div>
+    <div class="marquee-item"><i class="fas fa-handshake"></i> Perkhidmatan Sepanjang Tahun</div>
+    <div class="marquee-item marquee-sep">◆</div>
+  </div>
+</div>
+
+<!-- PERKHIDMATAN OVERVIEW -->
+<section class="services" id="perkhidmatan">
+  <div class="container">
+    <div class="section-header center" data-aos="fade-up">
+      <div class="section-tag">Perkhidmatan Kami</div>
+      <h2 class="section-title">Solusi Kewangan <span>Menyeluruh</span></h2>
+      <div class="gold-line"></div>
+      <p style="max-width:600px;margin:0 auto;color:var(--text-muted);font-size:15px;line-height:1.75;">Kami menawarkan pelbagai perkhidmatan kewangan di bawah satu bumbung untuk memastikan anda dan keluarga dilindungi dari semua aspek.</p>
+    </div>
+
+    <div class="services-grid">
+      <div class="service-card" data-aos="fade-up" data-aos-delay="0">
+        <div class="service-icon"><i class="fas fa-car-burst"></i></div>
+        <h3>Insurans Kenderaan</h3>
+        <p>Perlindungan komprehensif untuk kenderaan anda dengan panel terbaik. Kami menawarkan tiga produk insurans bertauliah untuk memenuhi keperluan anda.</p>
+        <div class="service-tags">
+          <span class="service-tag">Etiqa</span>
+          <span class="service-tag">Pacific & Orient</span>
+          <span class="service-tag">Zurich</span>
+        </div>
+        <a href="#insurans" class="service-link">Ketahui Lebih <i class="fas fa-arrow-right"></i></a>
+      </div>
+
+      <div class="service-card" data-aos="fade-up" data-aos-delay="100">
+        <div class="service-icon"><i class="fas fa-moon"></i></div>
+        <h3>Takaful Kenderaan</h3>
+        <p>Alternatif perlindungan kenderaan berasaskan prinsip syariah Islam yang telus, adil, dan bebas dari unsur riba, gharar, dan maisir.</p>
+        <div class="service-tags">
+          <span class="service-tag">Patuh Syariah</span>
+          <span class="service-tag">Konsep Tabarru'</span>
+          <span class="service-tag">Mudharabah</span>
+        </div>
+        <a href="#takaful" class="service-link">Ketahui Lebih <i class="fas fa-arrow-right"></i></a>
+      </div>
+
+      <div class="service-card" data-aos="fade-up" data-aos-delay="200">
+        <div class="service-icon"><i class="fas fa-coins"></i></div>
+        <h3>Pelaburan Emas & Perak</h3>
+        <p>Lindungi nilai kekayaan anda melalui pelaburan dalam logam berharga. Emas dan perak terbukti sebagai aset perlindungan inflasi yang terbaik sepanjang zaman.</p>
+        <div class="service-tags">
+          <span class="service-tag">Emas Fizikal</span>
+          <span class="service-tag">Perak Fizikal</span>
+          <span class="service-tag">Akaun Logam</span>
+        </div>
+        <a href="#pelaburan" class="service-link">Ketahui Lebih <i class="fas fa-arrow-right"></i></a>
+      </div>
+
+      <div class="service-card" data-aos="fade-up" data-aos-delay="300">
+        <div class="service-icon"><i class="fas fa-file-contract"></i></div>
+        <h3>Pengurusan Harta & Pusaka</h3>
+        <p>Perancangan dan pengurusan harta pusaka secara sistematik melalui instrumen wasiat, hibah, dan faraid yang sah mengikut undang-undang Malaysia.</p>
+        <div class="service-tags">
+          <span class="service-tag">Wasiat</span>
+          <span class="service-tag">Hibah</span>
+          <span class="service-tag">Faraid</span>
+          <span class="service-tag">Amanah</span>
+        </div>
+        <a href="#pusaka" class="service-link">Ketahui Lebih <i class="fas fa-arrow-right"></i></a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- INSURANS KENDERAAN DETAIL -->
+<section class="insurance-section" id="insurans">
+  <div class="container">
+    <div class="section-header" data-aos="fade-up">
+      <div class="section-tag">Panel Insurans Kami</div>
+      <h2 class="section-title">Insurans Kenderaan — <span>3 Pilihan Terbaik</span></h2>
+      <div class="gold-line"></div>
+      <p style="max-width:620px;color:var(--text-muted);font-size:15px;line-height:1.75;">Kami panel rasmi tiga syarikat insurans berprestij di Malaysia. Dapatkan perlindungan terbaik dengan harga yang kompetitif melalui agen bertauliah kami.</p>
+    </div>
+
+    <div class="insurance-grid" data-aos="fade-up" data-aos-delay="100">
+      <!-- ETIQA -->
+      <div class="insurer-card etiqa">
+        <div class="insurer-header">
+          <div class="insurer-logo">
+            <div class="insurer-logo-icon"><i class="fas fa-shield-halved"></i></div>
+            <div>
+              <div class="insurer-name">Etiqa</div>
+              <div class="insurer-tagline">Insurance & Takaful</div>
+            </div>
+          </div>
+          <div class="insurer-rating"><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i></div>
+        </div>
+        <div class="insurer-body">
+          <div class="insurer-features">
+            <div class="insurer-feature"><i class="fas fa-check-circle"></i> Perlindungan komprehensif & third party</div>
+            <div class="insurer-feature"><i class="fas fa-check-circle"></i> Tuntutan mudah melalui aplikasi Etiqa</div>
+            <div class="insurer-feature"><i class="fas fa-check-circle"></i> Panel workshop lebih 3,000 lokasi</div>
+            <div class="insurer-feature"><i class="fas fa-check-circle"></i> Road assist 24 jam percuma</div>
+            <div class="insurer-feature"><i class="fas fa-check-circle"></i> Tawaran takaful kenderaan tersedia</div>
+            <div class="insurer-feature"><i class="fas fa-check-circle"></i> Pelan keluarga & peribadi</div>
+          </div>
+        </div>
+        <div class="insurer-footer">
+          <!-- <button class="insurer-btn primary" onclick="scrollToContact()">Dapatkan Sebutan</button> -->
+          <button class="insurer-btn secondary" onclick="scrollToContact()">Maklumat Lanjut</button>
+        </div>
+      </div>
+
+      <!-- PACIFIC -->
+      <div class="insurer-card pacific">
+        <div class="insurer-header">
+          <div class="insurer-logo">
+            <div class="insurer-logo-icon"><i class="fas fa-anchor"></i></div>
+            <div>
+              <div class="insurer-name">Pacific & Orient</div>
+              <div class="insurer-tagline">Insurance Co. Berhad</div>
+            </div>
+          </div>
+          <div class="insurer-rating"><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star-half-alt"></i></div>
+        </div>
+        <div class="insurer-body">
+          <div class="insurer-features">
+            <div class="insurer-feature"><i class="fas fa-check-circle"></i> Syarikat insurans swasta bertauliah</div>
+            <div class="insurer-feature"><i class="fas fa-check-circle"></i> Perlindungan kenderaan komersial & persendirian</div>
+            <div class="insurer-feature"><i class="fas fa-check-circle"></i> Premium kompetitif dengan manfaat luas</div>
+            <div class="insurer-feature"><i class="fas fa-check-circle"></i> Proses tuntutan pantas & cekap</div>
+            <div class="insurer-feature"><i class="fas fa-check-circle"></i> Perkhidmatan pelanggan mesra</div>
+            <div class="insurer-feature"><i class="fas fa-check-circle"></i> Pelbagai pilihan deductible</div>
+          </div>
+        </div>
+        <div class="insurer-footer">
+          <!-- <button class="insurer-btn primary" onclick="scrollToContact()">Dapatkan Sebutan</button> -->
+          <button class="insurer-btn secondary" onclick="scrollToContact()">Maklumat Lanjut</button>
+        </div>
+      </div>
+
+      <!-- ZURICH -->
+      <div class="insurer-card zurich">
+        <div class="insurer-header">
+          <div class="insurer-logo">
+            <div class="insurer-logo-icon"><i class="fas fa-globe"></i></div>
+            <div>
+              <div class="insurer-name">Zurich</div>
+              <div class="insurer-tagline">General Insurance Malaysia</div>
+            </div>
+          </div>
+          <div class="insurer-rating"><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i></div>
+        </div>
+        <div class="insurer-body">
+          <div class="insurer-features">
+            <div class="insurer-feature"><i class="fas fa-check-circle"></i> Brand insurans global bertaraf antarabangsa</div>
+            <div class="insurer-feature"><i class="fas fa-check-circle"></i> Perlindungan komprehensif premium tinggi</div>
+            <div class="insurer-feature"><i class="fas fa-check-circle"></i> Servis pembaikan panel luas di Malaysia</div>
+            <div class="insurer-feature"><i class="fas fa-check-circle"></i> Perlindungan banjir & bencana alam</div>
+            <div class="insurer-feature"><i class="fas fa-check-circle"></i> Add-on windscreen & accessories cover</div>
+            <div class="insurer-feature"><i class="fas fa-check-circle"></i> Pengurusan tuntutan digital</div>
+          </div>
+        </div>
+        <div class="insurer-footer">
+          <!-- <button class="insurer-btn primary" onclick="scrollToContact()">Dapatkan Sebutan</button> -->
+          <button class="insurer-btn secondary" onclick="scrollToContact()">Maklumat Lanjut</button>
+        </div>
+      </div>
+    </div>
+
+    <!-- TAKAFUL SECTION -->
+    <div id="takaful" style="margin-top:72px;" data-aos="fade-up">
+      <div class="section-header">
+        <div class="section-tag">Alternatif Syariah</div>
+        <h2 class="section-title">Takaful Kenderaan — <span>Patuh Syariah</span></h2>
+        <div class="gold-line"></div>
+      </div>
+      <div style="background:linear-gradient(135deg,var(--navy),var(--navy-light));border-radius:var(--radius-lg);padding:40px 48px;display:grid;grid-template-columns:1fr 1fr;gap:48px;align-items:center;">
+        <div>
+          <p style="color:rgba(255,255,255,0.75);font-size:15px;line-height:1.85;margin-bottom:24px;">Takaful kenderaan adalah alternatif berasaskan prinsip Islam kepada insurans konvensional. Ia beroperasi atas konsep <strong style="color:var(--gold);">tabarru' (sumbangan kebajikan)</strong> dan mudharabah, bebas dari unsur riba, gharar, dan maisir.</p>
+          <div style="display:flex;flex-direction:column;gap:14px;">
+            <div style="display:flex;gap:12px;align-items:flex-start;"><i class="fas fa-check-circle" style="color:var(--gold);margin-top:2px;flex-shrink:0;"></i><div style="color:rgba(255,255,255,0.75);font-size:14px;">Konsep musytarak (perkongsian risiko) antara peserta</div></div>
+            <div style="display:flex;gap:12px;align-items:flex-start;"><i class="fas fa-check-circle" style="color:var(--gold);margin-top:2px;flex-shrink:0;"></i><div style="color:rgba(255,255,255,0.75);font-size:14px;">Lebihan wang dikembalikan kepada peserta (surplus sharing)</div></div>
+            <div style="display:flex;gap:12px;align-items:flex-start;"><i class="fas fa-check-circle" style="color:var(--gold);margin-top:2px;flex-shrink:0;"></i><div style="color:rgba(255,255,255,0.75);font-size:14px;">Diawasi oleh Majlis Penasihat Syariah</div></div>
+            <div style="display:flex;gap:12px;align-items:flex-start;"><i class="fas fa-check-circle" style="color:var(--gold);margin-top:2px;flex-shrink:0;"></i><div style="color:rgba(255,255,255,0.75);font-size:14px;">Skop perlindungan setara dengan insurans konvensional</div></div>
+          </div>
+          <div style="margin-top:28px;">
+            <a href="https://wa.me/60137206979" class="btn btn-primary"><i class="fas fa-phone"></i> Tanya Pakar Kami</a>
+          </div>
+        </div>
+        <div style="display:grid;grid-template-columns:1fr 1fr;gap:16px;">
+          <div style="background:rgba(255,255,255,0.07);border-radius:12px;padding:22px;text-align:center;border:1px solid rgba(201,168,76,0.2);">
+            <i class="fas fa-moon" style="font-size:28px;color:var(--gold);margin-bottom:10px;display:block;"></i>
+            <div style="font-weight:700;color:white;font-size:13px;">Takaful Am</div>
+            <div style="font-size:12px;color:rgba(255,255,255,0.5);margin-top:4px;">Kenderaan & harta</div>
+          </div>
+          <div style="background:rgba(255,255,255,0.07);border-radius:12px;padding:22px;text-align:center;border:1px solid rgba(201,168,76,0.2);">
+            <i class="fas fa-heart" style="font-size:28px;color:var(--gold);margin-bottom:10px;display:block;"></i>
+            <div style="font-weight:700;color:white;font-size:13px;">Takaful Keluarga</div>
+            <div style="font-size:12px;color:rgba(255,255,255,0.5);margin-top:4px;">Perlindungan hayat</div>
+          </div>
+          <div style="background:rgba(255,255,255,0.07);border-radius:12px;padding:22px;text-align:center;border:1px solid rgba(201,168,76,0.2);">
+            <i class="fas fa-hospital" style="font-size:28px;color:var(--gold);margin-bottom:10px;display:block;"></i>
+            <div style="font-weight:700;color:white;font-size:13px;">Takaful Perubatan</div>
+            <div style="font-size:12px;color:rgba(255,255,255,0.5);margin-top:4px;">Hospital & rawatan</div>
+          </div>
+          <div style="background:rgba(255,255,255,0.07);border-radius:12px;padding:22px;text-align:center;border:1px solid rgba(201,168,76,0.2);">
+            <i class="fas fa-umbrella" style="font-size:28px;color:var(--gold);margin-bottom:10px;display:block;"></i>
+            <div style="font-weight:700;color:white;font-size:13px;">Takaful Peribadi</div>
+            <div style="font-size:12px;color:rgba(255,255,255,0.5);margin-top:4px;">Kemalangan diri</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- WHY US -->
+<section class="why-us" id="kenapa-kami">
+  <div class="container">
+    <div class="why-grid">
+      <div class="why-left" data-aos="fade-right">
+        <div class="section-tag">Kenapa Pilih Kami</div>
+        <h2 class="section-title" style="color:var(--white);">Agen Amanah Yang <span>Anda Boleh Percaya</span></h2>
+        <div class="gold-line"></div>
+        <p>Kami bukan sekadar agen — kami adalah rakan kewangan jangka panjang anda. Dengan lebih 10 tahun pengalaman, kami memahami keperluan unik setiap pelanggan.</p>
+        <div class="why-list">
+          <div class="why-item">
+            <div class="why-item-icon"><i class="fas fa-certificate"></i></div>
+            <div>
+              <h4>Berlesen & Bertauliah Penuh</h4>
+              <p>Agen berlesen di bawah Bank Negara Malaysia (BNM) dan Suruhanjaya Sekuriti. Semua transaksi terjamin dan sah di sisi undang-undang.</p>
+            </div>
+          </div>
+          <div class="why-item">
+            <div class="why-item-icon"><i class="fas fa-headset"></i></div>
+            <div>
+              <h4>Khidmat Pelanggan </h4>
+              <p>Kami sedia membantu anda pada hari isnin hingga sabtu termasuk waktu kecemasan. Talian WhatsApp kami aktif pada 6 hari tersebut untuk keselesaan anda.</p>
+            </div>
+          </div>
+          <div class="why-item">
+            <div class="why-item-icon"><i class="fas fa-handshake"></i></div>
+            <div>
+              <h4>Perkhidmatan Peribadi</h4>
+              <p>Setiap pelanggan mendapat perhatian penuh dan nasihat yang disesuaikan dengan keperluan dan bajet masing-masing.</p>
+            </div>
+          </div>
+          <div class="why-item">
+            <div class="why-item-icon"><i class="fas fa-clock"></i></div>
+            <div>
+              <h4>Proses Tuntutan Pantas</h4>
+              <p>Kami bantu urus proses tuntutan anda dari mula hingga selesai. Pengalaman kami mempercepatkan proses kelulusan tuntutan anda.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="why-right" data-aos="fade-left">
+        <div class="stat-card">
+          <div class="stat-num">500+</div>
+          <div class="stat-label">Klien Berpuas Hati</div>
+          <div class="stat-desc">Di seluruh Malaysia</div>
+        </div>
+        <div class="stat-card">
+          <div class="stat-num">10+</div>
+          <div class="stat-label">Tahun Pengalaman</div>
+          <div class="stat-desc">Dalam industri kewangan</div>
+        </div>
+        <div class="stat-card">
+          <div class="stat-num">98%</div>
+          <div class="stat-label">Kadar Tuntutan Berjaya</div>
+          <div class="stat-desc">Rekod tuntutan kami</div>
+        </div>
+        <div class="stat-card">
+          <div class="stat-num">3</div>
+          <div class="stat-label">Panel Insurans Utama</div>
+          <div class="stat-desc">Etiqa, Pacific, Zurich</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- PELABURAN EMAS & PERAK -->
+<section class="investment" id="pelaburan">
+  <div class="container">
+    <div class="investment-grid">
+      <div class="investment-info" data-aos="fade-right">
+        <div class="section-tag">Pelaburan Pintar</div>
+        <h2 class="section-title">Emas & Perak — <span>Aset Abadi</span></h2>
+        <div class="gold-line"></div>
+        <p class="section-desc">Emas dan perak adalah antara aset simpanan tertua dan paling stabil di dunia. Dalam persekitaran ekonomi yang tidak menentu, logam berharga bertindak sebagai pelindung nilai yang berkesan terhadap inflasi dan ketidakstabilan mata wang.</p>
+        <div class="investment-types">
+          <div class="invest-type gold-inv">
+            <i class="fas fa-circle"></i>
+            <h4>Pelaburan Emas</h4>
+            <p>Emas fizikal dan akaun emas — perlindungan terbaik terhadap inflasi dan ketidaktentuan pasaran.</p>
+          </div>
+          <div class="invest-type silver-inv">
+            <i class="fas fa-circle"></i>
+            <h4>Pelaburan Perak</h4>
+            <p>Perak fizikal dengan harga lebih rendah — pilihan terbaik untuk permulaan pelaburan logam berharga.</p>
+          </div>
+        </div>
+        <div style="background:var(--white);border-radius:var(--radius);padding:20px;border:1px solid rgba(0,0,0,0.07);margin-bottom:24px;">
+          <div style="font-size:12px;font-weight:700;color:var(--navy);text-transform:uppercase;letter-spacing:1.5px;margin-bottom:12px;">Kelebihan Pelaburan Logam Berharga</div>
+          <div style="display:flex;flex-wrap:wrap;gap:8px;">
+            <span style="font-size:12px;padding:5px 12px;background:var(--off-white);border-radius:4px;color:var(--text-muted);">✦ Lindungi Inflasi</span>
+            <span style="font-size:12px;padding:5px 12px;background:var(--off-white);border-radius:4px;color:var(--text-muted);">✦ Aset Fizikal</span>
+            <span style="font-size:12px;padding:5px 12px;background:var(--off-white);border-radius:4px;color:var(--text-muted);">✦ Mudah Dicairkan</span>
+            <span style="font-size:12px;padding:5px 12px;background:var(--off-white);border-radius:4px;color:var(--text-muted);">✦ Patuh Syariah</span>
+            <span style="font-size:12px;padding:5px 12px;background:var(--off-white);border-radius:4px;color:var(--text-muted);">✦ Nilai Kekal</span>
+          </div>
+        </div>
+        <a href="#hubungi" class="btn btn-dark"><i class="fas fa-chart-line"></i> Mula Pelaburan Sekarang</a>
+      </div>
+
+      <!-- <div data-aos="fade-left">
+        <div class="price-ticker">
+          <div class="ticker-header">
+            <div class="ticker-title">📊 Harga Pasaran (MYR)</div>
+            <div class="ticker-live">LIVE</div>
+          </div>
+          <div class="ticker-items">
+            <div class="ticker-item">
+              <div class="ticker-left">
+                <div class="ticker-dot gold"></div>
+                <div>
+                  <div class="ticker-name">Emas 999</div>
+                  <div class="ticker-unit">per gram</div>
+                </div>
+              </div>
+              <div class="ticker-right">
+                <div class="ticker-price" id="gold-price">RM 390.00</div>
+                <div class="ticker-change up" id="gold-change">▲ +1.2%</div>
+              </div>
+            </div>
+            <div class="ticker-item">
+              <div class="ticker-left">
+                <div class="ticker-dot gold"></div>
+                <div>
+                  <div class="ticker-name">Emas 916</div>
+                  <div class="ticker-unit">per gram</div>
+                </div>
+              </div>
+              <div class="ticker-right">
+                <div class="ticker-price">RM 357.00</div>
+                <div class="ticker-change up">▲ +0.9%</div>
+              </div>
+            </div>
+            <div class="ticker-item">
+              <div class="ticker-left">
+                <div class="ticker-dot silver"></div>
+                <div>
+                  <div class="ticker-name">Perak 999</div>
+                  <div class="ticker-unit">per gram</div>
+                </div>
+              </div>
+              <div class="ticker-right">
+                <div class="ticker-price">RM 4.85</div>
+                <div class="ticker-change down">▼ -0.3%</div>
+              </div>
+            </div>
+          </div>
+          <div style="margin-top:20px;padding:16px;background:rgba(201,168,76,0.08);border-radius:10px;border:1px solid rgba(201,168,76,0.15);">
+            <div style="font-size:12px;color:var(--gold);font-weight:600;margin-bottom:6px;">💡 Tip Pakar</div>
+            <div style="font-size:12px;color:rgba(255,255,255,0.6);line-height:1.65;">Mulakan pelaburan emas dengan strategi Dollar Cost Averaging (DCA) — beli secara konsisten tanpa perlu risau tentang masa yang tepat.</div>
+          </div>
+          <div style="margin-top:16px;">
+            <button onclick="scrollToContact()" style="width:100%;padding:13px;background:var(--gold);color:var(--navy);font-weight:700;font-size:14px;border:none;border-radius:8px;cursor:pointer;transition:all 0.3s;" onmouseover="this.style.background='#E8C96A'" onmouseout="this.style.background='var(--gold)'">Hubungi Kami untuk Harga Terkini</button>
+          </div>
+        </div>
+      </div> -->
+    </div>
+  </div>
+</section>
+
+<!-- PUSAKA & HARTA -->
+<section class="pusaka" id="pusaka">
+  <div class="container">
+    <div class="section-header center" data-aos="fade-up">
+      <div class="section-tag">Perancangan Masa Depan</div>
+      <h2 class="section-title">Pengurusan Harta <span>& Pusaka</span></h2>
+      <div class="gold-line"></div>
+      <p style="max-width:640px;margin:0 auto;color:var(--text-muted);font-size:15px;line-height:1.75;">Pastikan harta anda diagihkan dengan betul kepada waris yang berhak. Elakkan konflik keluarga dan kelewatan pengurusan harta dengan perancangan yang teliti bersama pakar kami.</p>
+    </div>
+
+    <div class="pusaka-grid">
+      <div class="pusaka-card" data-aos="fade-up" data-aos-delay="0">
+        <div class="pusaka-step">1</div>
+        <div class="pusaka-icon"><i class="fas fa-file-signature"></i></div>
+        <h3>Wasiat Islam</h3>
+        <p>Dokumen sah yang menyatakan kehendak anda berkenaan pembahagian harta selepas kematian. Wasiat Islam terhad kepada 1/3 harta untuk bukan waris, manakala 2/3 dibahagikan mengikut faraid.</p>
+      </div>
+      <div class="pusaka-card" data-aos="fade-up" data-aos-delay="100">
+        <div class="pusaka-step">2</div>
+        <div class="pusaka-icon"><i class="fas fa-balance-scale"></i></div>
+        <h3>Faraid (Pembahagian Pusaka)</h3>
+        <p>Hukum pembahagian harta pusaka menurut Islam yang telah ditetapkan oleh Al-Quran. Kami membantu keluarga memahami dan melaksanakan faraid dengan betul dan adil.</p>
+      </div>
+      <div class="pusaka-card" data-aos="fade-up" data-aos-delay="200">
+        <div class="pusaka-step">3</div>
+        <div class="pusaka-icon"><i class="fas fa-gift"></i></div>
+        <h3>Hibah (Pemberian Semasa Hidup)</h3>
+        <p>Pemindahan harta kepada penerima semasa pemilik masih hidup. Hibah lebih fleksibel dan boleh merangkumi mana-mana harta tanpa had kadar atau bilangan penerima.</p>
+      </div>
+      <div class="pusaka-card" data-aos="fade-up" data-aos-delay="300">
+        <div class="pusaka-step">4</div>
+        <div class="pusaka-icon"><i class="fas fa-shield-halved"></i></div>
+        <h3>Amanah (Trust)</h3>
+        <p>Mekanisme perlindungan harta untuk generasi akan datang. Amanah memastikan harta anda diurus oleh pemegang amanah yang dipercayai mengikut syarat yang anda tetapkan.</p>
+      </div>
+      <div class="pusaka-card" data-aos="fade-up" data-aos-delay="400">
+        <div class="pusaka-step">5</div>
+        <div class="pusaka-icon"><i class="fas fa-house-chimney"></i></div>
+        <h3>Pengurusan Harta Tanah</h3>
+        <p>Perancangan dan pengurusan harta tanah termasuk rumah, tanah, dan hartanah komersial agar tidak terbengkalai atau terlepas kepada pihak yang tidak berhak.</p>
+      </div>
+      <div class="pusaka-card" data-aos="fade-up" data-aos-delay="500">
+        <div class="pusaka-step">6</div>
+        <div class="pusaka-icon"><i class="fas fa-users"></i></div>
+        <h3>Rundingan Keluarga</h3>
+        <p>Kami menyediakan perkhidmatan rundingan keluarga untuk membantu penyelesaian pertikaian harta pusaka secara aman dan mengikut undang-undang yang berkuatkuasa di Malaysia.</p>
+      </div>
+    </div>
+
+    <!-- CTA PUSAKA -->
+    <div style="margin-top:48px;background:var(--off-white);border-radius:var(--radius-lg);padding:40px;display:flex;align-items:center;justify-content:space-between;gap:24px;flex-wrap:wrap;border:1px solid rgba(0,0,0,0.06);" data-aos="fade-up">
+      <div>
+        <div style="font-family:'Playfair Display',serif;font-size:1.4rem;font-weight:700;color:var(--navy);margin-bottom:8px;">Jangan tunggu terlambat. Rancang pusaka anda hari ini.</div>
+        <div style="font-size:14px;color:var(--text-muted);">Konsultasi percuma untuk pelanggan baharu. Hubungi kami sekarang.</div>
+      </div>
+      <a href="https://wa.me/60137206979" class="btn btn-primary" style="flex-shrink:0;"><i class="fas fa-calendar-check"></i> Tempah Konsultasi Percuma</a>
+    </div>
+  </div>
+</section>
+
+<!-- TESTIMONIALS -->
+<!-- <section class="testimonials">
+  <div class="container">
+    <div class="section-header center" data-aos="fade-up">
+      <div class="section-tag">Apa Kata Mereka</div>
+      <h2 class="section-title">Ulasan <span>Pelanggan Kami</span></h2>
+      <div class="gold-line"></div>
+    </div>
+    <div class="testimonials-grid">
+      <div class="testi-card" data-aos="fade-up" data-aos-delay="0">
+        <div class="testi-stars"><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i></div>
+        <p class="testi-text">"Saya sangat berpuas hati dengan perkhidmatan AsiaShield FS. Proses insurans kenderaan saya dengan Etiqa diselesaikan dalam masa 30 minit sahaja. Agen sangat profesional dan teliti menjelaskan setiap terma polisi."</p>
+        <div class="testi-author">
+          <div class="testi-avatar">A</div>
+          <div>
+            <div class="testi-name">Ahmad Faizal</div>
+            <div class="testi-role">Usahawan, Kuala Lumpur</div>
+            <div class="testi-service">Insurans Kenderaan Etiqa</div>
+          </div>
+        </div>
+      </div>
+      <div class="testi-card" data-aos="fade-up" data-aos-delay="100">
+        <div class="testi-stars"><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i></div>
+        <p class="testi-text">"Alhamdulillah, dengan bimbingan agen AsiaShield FS, saya berjaya mulakan pelaburan emas dan menyiapkan wasiat Islam dalam satu pakej. Mereka faham keperluan kami dari sudut kewangan Islam sepenuhnya."</p>
+        <div class="testi-author">
+          <div class="testi-avatar">S</div>
+          <div>
+            <div class="testi-name">Siti Nurhaliza</div>
+            <div class="testi-role">Guru, Selangor</div>
+            <div class="testi-service">Pelaburan Emas + Wasiat</div>
+          </div>
+        </div>
+      </div>
+      <div class="testi-card" data-aos="fade-up" data-aos-delay="200">
+        <div class="testi-stars"><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star-half-alt"></i></div>
+        <p class="testi-text">"Tuntutan insurans kereta saya dibantu sepenuhnya oleh pasukan AsiaShield FS. Mereka memandu saya setiap langkah dan tuntutan saya berjaya diselesaikan dalam masa yang singkat. Terima kasih!"</p>
+        <div class="testi-author">
+          <div class="testi-avatar">R</div>
+          <div>
+            <div class="testi-name">Raj Kumar</div>
+            <div class="testi-role">Jurutera, Johor Bahru</div>
+            <div class="testi-service">Insurans Kenderaan Zurich</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section> -->
+
+<!-- PARTNERS -->
+<section class="partners">
+  <div class="container">
+    <div class="section-header center" data-aos="fade-up">
+      <div class="section-tag">Panel Rasmi</div>
+      <p style="color:var(--text-muted);font-size:13px;text-transform:uppercase;letter-spacing:2px;">Kami Agen Panel Rasmi</p>
+    </div>
+    <div class="partners-row" data-aos="fade-up" data-aos-delay="100">
+      <div class="partner-logo partner-etiqa"><i class="fas fa-shield-halved"></i><span>ETIQA</span></div>
+      <div class="partner-logo partner-pacific"><i class="fas fa-anchor"></i><span>PACIFIC INSURANS</span></div>
+      <div class="partner-logo partner-zurich"><i class="fas fa-globe"></i><span>ZURICH</span></div>
+    </div>
+  </div>
+</section>
+
+<!-- FAQ
+<section class="faq" id="faq">
+  <div class="container">
+    <div class="section-header" data-aos="fade-up">
+      <div class="section-tag">Soalan Lazim</div>
+      <h2 class="section-title">Soalan Yang <span>Sering Ditanya</span></h2>
+      <div class="gold-line"></div>
+    </div>
+    <div class="faq-grid">
+      <div class="faq-list" data-aos="fade-right">
+        <div class="faq-item">
+          <div class="faq-question" onclick="toggleFaq(this)">
+            Apakah perbezaan insurans komprehensif dan third party? <i class="fas fa-plus"></i>
+          </div>
+          <div class="faq-answer"><p>Insurans komprehensif melindungi kenderaan anda sendiri DAN pihak ketiga dalam sebarang kemalangan termasuk kecurian dan kebakaran. Insurans third party hanya melindungi kerosakan kepada kenderaan atau harta pihak ketiga sahaja, tidak kenderaan anda sendiri.</p></div>
+        </div>
+        <div class="faq-item">
+          <div class="faq-question" onclick="toggleFaq(this)">
+            Adakah takaful lebih baik daripada insurans konvensional? <i class="fas fa-plus"></i>
+          </div>
+          <div class="faq-answer"><p>Untuk umat Islam, takaful adalah pilihan yang lebih diutamakan kerana ia bebas dari riba, gharar, dan maisir. Dari segi perlindungan, kedua-duanya menawarkan manfaat yang setara. Pilihan bergantung kepada kepercayaan dan keutamaan peribadi anda.</p></div>
+        </div>
+        <div class="faq-item">
+          <div class="faq-question" onclick="toggleFaq(this)">
+            Bagaimana cara membuat tuntutan insurans kenderaan? <i class="fas fa-plus"></i>
+          </div>
+          <div class="faq-answer"><p>Dalam kes kemalangan: (1) Ambil gambar kejadian, (2) Buat laporan polis dalam 24 jam, (3) Hubungi kami segera dan kami akan pandu anda melalui proses tuntutan dari mula hingga selesai termasuk urusan dengan panel workshop.</p></div>
+        </div>
+        <div class="faq-item">
+          <div class="faq-question" onclick="toggleFaq(this)">
+            Bolehkah saya mula pelaburan emas dengan modal kecil? <i class="fas fa-plus"></i>
+          </div>
+          <div class="faq-answer"><p>Ya, anda boleh mula pelaburan emas dengan modal serendah RM100 melalui akaun pelaburan emas. Kami menasihati kaedah Dollar Cost Averaging (DCA) iaitu membeli secara berkala untuk mengurangkan risiko turun naik harga.</p></div>
+        </div>
+        <div class="faq-item">
+          <div class="faq-question" onclick="toggleFaq(this)">
+            Mengapa saya perlu membuat wasiat sekarang? <i class="fas fa-plus"></i>
+          </div>
+          <div class="faq-answer"><p>Tanpa wasiat, harta anda akan dibahagikan mengikut undang-undang faraid (Islam) atau akta pembahagian (bukan Islam), yang mungkin tidak selaras dengan kehendak anda. Proses tanpa wasiat juga boleh mengambil masa bertahun-tahun dan menyebabkan konflik keluarga.</p></div>
+        </div>
+        <div class="faq-item">
+          <div class="faq-question" onclick="toggleFaq(this)">
+            Adakah perkhidmatan konsultasi percuma? <i class="fas fa-plus"></i>
+          </div>
+          <div class="faq-answer"><p>Ya! Kami menawarkan konsultasi percuma tanpa obligasi untuk semua bakal pelanggan baharu. Hubungi kami melalui WhatsApp atau borang pertanyaan di bawah untuk menempah sesi konsultasi anda.</p></div>
+        </div>
+      </div>
+
+      <div data-aos="fade-left">
+        <div class="faq-right-card">
+          <h3>Masih ada soalan?</h3>
+          <p>Hubungi pakar kami sekarang untuk mendapatkan jawapan dan nasihat yang paling tepat untuk keperluan anda.</p>
+          <div class="contact-options">
+            <div class="contact-opt">
+              <div class="contact-opt-icon"><i class="fab fa-whatsapp"></i></div>
+              <div>
+                <div class="contact-opt-label">WhatsApp</div>
+                <div class="contact-opt-value">+60 11-XXXX XXXX</div>
+              </div>
+            </div>
+            <div class="contact-opt">
+              <div class="contact-opt-icon"><i class="fas fa-phone"></i></div>
+              <div>
+                <div class="contact-opt-label">Telefon</div>
+                <div class="contact-opt-value">+60 3-XXXX XXXX</div>
+              </div>
+            </div>
+            <div class="contact-opt">
+              <div class="contact-opt-icon"><i class="fas fa-envelope"></i></div>
+              <div>
+                <div class="contact-opt-label">E-mel</div>
+                <div class="contact-opt-value">info@asiashieldfs.com.my</div>
+              </div>
+            </div>
+            <div class="contact-opt">
+              <div class="contact-opt-icon"><i class="fas fa-map-marker-alt"></i></div>
+              <div>
+                <div class="contact-opt-label">Pejabat</div>
+                <div class="contact-opt-value">Kuala Lumpur, Malaysia</div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section> -->
+
+<!-- CTA BANNER -->
+<div class="cta-banner">
+  <div class="container">
+    <div class="cta-inner" data-aos="fade-up">
+      <h2>Sedia Untuk Memulakan?</h2>
+      <p>Dapatkan sebutan harga insurans PERCUMA dalam masa 5 minit. Tanpa komitmen, tanpa kos tersembunyi.</p>
+      <div class="cta-btns">
+        <a href="https://wa.me/60137206979" class="cta-btn-white"><i class="fas fa-phone" style="margin-right:8px;"></i>Hubungi Sekarang</a>
+        <a href="https://wa.me/60137206979" class="cta-btn-ghost"><i class="fab fa-whatsapp" style="margin-right:8px;"></i>WhatsApp Kami</a>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="cta-banner">
+  <div class="container">
+    <div class="cta-inner" data-aos="fade-up">
+      <h2>AGENT KAMI</h2>
+      <p>INFO TENTANG AGENT KAMI</p>
+      <div class="cta-btns">
+        <a href="agent.html" class="cta-btn-white"><i style="margin-right:8px;"></i>KETAHUI LANJUT</a>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- CONTACT
+<section class="contact" id="hubungi">
+  <div class="container">
+    <div class="contact-grid">
+      <div class="contact-info" data-aos="fade-right">
+        <div class="section-tag">Hubungi Kami</div>
+        <h2 class="section-title" style="color:var(--white);">Bercakap Dengan <span>Pakar Kami</span></h2>
+        <div class="gold-line"></div>
+        <p>Kami sedia membantu anda membuat keputusan kewangan yang tepat. Hubungi kami hari ini untuk konsultasi percuma tanpa sebarang obligasi.</p>
+        <div class="contact-details">
+          <div class="contact-detail">
+            <div class="contact-detail-icon"><i class="fab fa-whatsapp"></i></div>
+            <div>
+              <div class="contact-detail-label">WhatsApp (Utama)</div>
+              <div class="contact-detail-value">+60 11-XXXX XXXX</div>
+            </div>
+          </div>
+          <div class="contact-detail">
+            <div class="contact-detail-icon"><i class="fas fa-phone"></i></div>
+            <div>
+              <div class="contact-detail-label">Telefon Pejabat</div>
+              <div class="contact-detail-value">+60 3-XXXX XXXX</div>
+            </div>
+          </div>
+          <div class="contact-detail">
+            <div class="contact-detail-icon"><i class="fas fa-envelope"></i></div>
+            <div>
+              <div class="contact-detail-label">E-mel Rasmi</div>
+              <div class="contact-detail-value">info@asiashieldfs.com.my</div>
+            </div>
+          </div>
+          <div class="contact-detail">
+            <div class="contact-detail-icon"><i class="fas fa-clock"></i></div>
+            <div>
+              <div class="contact-detail-label">Waktu Operasi</div>
+              <div class="contact-detail-value">Isnin – Jumaat: 9:00 am – 6:00 pm<br><span style="font-size:13px;color:rgba(255,255,255,0.5);">Sabtu: 9:00 am – 1:00 pm</span></div>
+            </div>
+          </div>
+          <div class="contact-detail">
+            <div class="contact-detail-icon"><i class="fas fa-map-marker-alt"></i></div>
+            <div>
+              <div class="contact-detail-label">Alamat Pejabat</div>
+              <div class="contact-detail-value">No. XX, Jalan XXX,<br>XXXXX Kuala Lumpur, Malaysia</div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div data-aos="fade-left">
+        <div class="contact-form">
+          <div class="form-title">Hantar Pertanyaan</div>
+          <div class="form-sub">Isi borang di bawah dan kami akan menghubungi anda dalam masa 24 jam.</div>
+          <div class="form-grid">
+            <div class="form-group">
+              <label>Nama Penuh *</label>
+              <input type="text" placeholder="Nama anda" />
+            </div>
+            <div class="form-group">
+              <label>No. Telefon *</label>
+              <input type="tel" placeholder="+60 1X-XXX XXXX" />
+            </div>
+            <div class="form-group">
+              <label>Alamat E-mel</label>
+              <input type="email" placeholder="email@contoh.com" />
+            </div>
+            <div class="form-group">
+              <label>Jenis Perkhidmatan *</label>
+              <select>
+                <option value="">Pilih perkhidmatan...</option>
+                <option>Insurans Kenderaan – Etiqa</option>
+                <option>Insurans Kenderaan – Pacific & Orient</option>
+                <option>Insurans Kenderaan – Zurich</option>
+                <option>Takaful Kenderaan</option>
+                <option>Takaful Perubatan / Keluarga</option>
+                <option>Pelaburan Emas</option>
+                <option>Pelaburan Perak</option>
+                <option>Pengurusan Harta & Pusaka</option>
+                <option>Wasiat Islam</option>
+                <option>Lain-lain</option>
+              </select>
+            </div>
+            <div class="form-group full">
+              <label>Mesej / Pertanyaan</label>
+              <textarea placeholder="Ceritakan keperluan anda..."></textarea>
+            </div>
+          </div>
+          <button class="form-submit" onclick="submitForm()"><i class="fas fa-paper-plane"></i> &nbsp;Hantar Pertanyaan Sekarang</button>
+          <div class="form-note">🔒 Maklumat anda adalah sulit dan tidak akan dikongsi kepada pihak ketiga.</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section> -->
+
+<!-- FOOTER -->
+<footer class="footer">
+  <div class="footer-main">
+    <div class="container">
+      <div class="footer-grid">
+        <div class="footer-brand">
+          <div class="logo" style="margin-bottom:16px;">
+            <div class="logo-icon"><i class="fas fa-shield-halved"></i></div>
+            <div class="logo-text">
+              <div class="brand" style="color:white;">IHA GROUP</div>
+              <div class="sub">Financial Services</div>
+            </div>
+          </div>
+          <p>Agen insurans dan kewangan bertauliah yang komited memberikan perkhidmatan terbaik kepada setiap pelanggan. Kami percaya dalam hubungan jangka panjang yang dibina atas kepercayaan dan integriti.</p>
+          <div class="footer-socials">
+            <a href="https://www.facebook.com/share/16gsm8nzTY/" class="footer-social"><i class="fab fa-facebook-f"></i></a>
+            <a href="https://www.instagram.com/norhayati_zakariaiha?igsh=MXFmcHc5ZXE2MmZpbw==" class="footer-social"><i class="fab fa-instagram"></i></a>
+            <a href="https://wa.me/60137206979" class="footer-social"><i class="fab fa-whatsapp"></i></a>
+            <a href="https://www.tiktok.com/@norhayatizakaria75?_r=1&_t=ZS-95lylMN1x71" class="footer-social"><i class="fab fa-tiktok"></i></a>
+          </div>
+        </div>
+
+        <div class="footer-col">
+          <h4>Perkhidmatan</h4>
+          <a href="#insurans" class="footer-link"><i class="fas fa-chevron-right"></i> Insurans Etiqa</a>
+          <a href="#insurans" class="footer-link"><i class="fas fa-chevron-right"></i> Insurans Pacific</a>
+          <a href="#insurans" class="footer-link"><i class="fas fa-chevron-right"></i> Insurans Zurich</a>
+          <a href="#takaful" class="footer-link"><i class="fas fa-chevron-right"></i> Takaful Kenderaan</a>
+          <a href="#pelaburan" class="footer-link"><i class="fas fa-chevron-right"></i> Pelaburan Emas</a>
+          <a href="#pelaburan" class="footer-link"><i class="fas fa-chevron-right"></i> Pelaburan Perak</a>
+          <a href="#pusaka" class="footer-link"><i class="fas fa-chevron-right"></i> Pengurusan Pusaka</a>
+        </div>
+
+        <div class="footer-col">
+          <h4>Pautan Berguna</h4>
+          <a href="#" class="footer-link"><i class="fas fa-chevron-right"></i> Tentang Kami</a>
+          <a href="#" class="footer-link"><i class="fas fa-chevron-right"></i> Kalkulator Premium</a>
+          <a href="#" class="footer-link"><i class="fas fa-chevron-right"></i> Proses Tuntutan</a>
+          <a href="#" class="footer-link"><i class="fas fa-chevron-right"></i> Glosari Insurans</a>
+          <a href="#hubungi" class="footer-link"><i class="fas fa-chevron-right"></i> Hubungi Kami</a>
+        </div>
+
+        <div class="footer-col">
+          <h4>Hubungi Kami</h4>
+          <div class="footer-contact-item"><i class="fab fa-whatsapp"></i>+60 13-720 6979</div>
+          <div class="footer-contact-item"><i class="fas fa-phone"></i>+60 6-986 8503</div>
+          <div class="footer-contact-item"><i class="fas fa-envelope"></i>ihaagency75@gmail.com</div>
+          <div class="footer-contact-item"><i class="fas fa-map-marker-alt"></i>Muar , Johor</div>
+          <div class="footer-contact-item"><i class="fas fa-clock"></i>Isnin–Jumaat 9am–6pm<br>Sabtu 9am–1pm</div>
+        </div>
+      </div>
+    </div>
+  </div>
+  
+
+  <div class="footer-bottom">
+    <div class="container">
+      <div class="footer-bottom-inner">
+        <div class="footer-copy">since 2001</div>
+        <div class="footer-bottom-links">
+          <!-- <a href="#" class="footer-bottom-link">Dasar Privasi</a>
+          <a href="#" class="footer-bottom-link">Terma & Syarat</a>
+          <a href="#" class="footer-bottom-link">Peta Laman</a> -->
+        </div>
+        <div class="footer-cert"><i class="fas fa-certificate"></i> Berlesen di bawah Bank Negara Malaysia</div>
+      </div>
+    </div>
+  </div>
+</footer>
+
+<!-- BACK TO TOP -->
+<button class="back-top" id="backTop" onclick="window.scrollTo({top:0,behavior:'smooth'})">
+  <i class="fas fa-chevron-up"></i>
+</button>
+
+<!-- WHATSAPP FLOAT -->
+<div class="whatsapp-float">
+  <a href="https://wa.me/60137206979" target="_blank">
+    <i class="fab fa-whatsapp"></i> WhatsApp Kami
+  </a>
+</div>
+
+<!-- AOS -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/aos/2.3.4/aos.js"></script>
+
+<script>
+  // AOS Init
+  AOS.init({ once: true, offset: 60, duration: 700 });
+
+  // Navbar scroll
+  window.addEventListener('scroll', () => {
+    const nav = document.getElementById('navbar');
+    nav.classList.toggle('scrolled', window.scrollY > 60);
+    document.getElementById('backTop').classList.toggle('visible', window.scrollY > 400);
+  });
+
+  // Mobile nav
+  function openMobileNav() { document.getElementById('mobileNav').classList.add('open'); document.body.style.overflow = 'hidden'; }
+  function closeMobileNav() { document.getElementById('mobileNav').classList.remove('open'); document.body.style.overflow = ''; }
+  function toggleMobileSub(el) {
+    const sub = el.nextElementSibling;
+    sub.classList.toggle('open');
+    el.querySelector('i').style.transform = sub.classList.contains('open') ? 'rotate(180deg)' : '';
+  }
+
+  // FAQ toggle
+  function toggleFaq(el) {
+    const item = el.parentElement;
+    document.querySelectorAll('.faq-item.open').forEach(i => { if(i !== item) i.classList.remove('open'); });
+    item.classList.toggle('open');
+  }
+
+  // Scroll to contact
+  function scrollToContact() {
+    document.getElementById('hubungi').scrollIntoView({ behavior: 'smooth' });
+  }
+
+  // Form submit
+  function submitForm() {
+    const btn = document.querySelector('.form-submit');
+    btn.innerHTML = '<i class="fas fa-check"></i> &nbsp;Pertanyaan Dihantar!';
+    btn.style.background = '#4CAF50';
+    setTimeout(() => {
+      btn.innerHTML = '<i class="fas fa-paper-plane"></i> &nbsp;Hantar Pertanyaan Sekarang';
+      btn.style.background = '';
+    }, 3000);
+  }
+
+  // Gold price ticker animation
+  let goldBase = 390;
+  setInterval(() => {
+    const change = (Math.random() - 0.48) * 2;
+    goldBase = Math.max(380, Math.min(400, goldBase + change));
+    const el = document.getElementById('gold-price');
+    const chEl = document.getElementById('gold-change');
+    if (el) el.textContent = 'RM ' + goldBase.toFixed(2);
+    if (chEl) {
+      const pct = (change / 390 * 100).toFixed(2);
+      chEl.textContent = change >= 0 ? `▲ +${Math.abs(pct)}%` : `▼ -${Math.abs(pct)}%`;
+      chEl.className = 'ticker-change ' + (change >= 0 ? 'up' : 'down');
+    }
+  }, 3000);
+</script>
+
+</body>
+</html>

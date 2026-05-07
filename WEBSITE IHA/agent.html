@@ -1,0 +1,919 @@
+<!DOCTYPE html>
+<html lang="ms">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Senarai Ejen — IHA GROUP</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,600;0,700;1,400&family=Outfit:wght@300;400;500;600;700&family=DM+Mono:wght@400;500&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" />
+
+  <style>
+    :root {
+      --gold: #C9A84C;
+      --gold-light: #E8C96A;
+      --gold-dark: #8B6914;
+      --navy: #0A1628;
+      --navy-mid: #112240;
+      --navy-light: #1A3460;
+      --ink: #06101E;
+      --white: #FFFFFF;
+      --cream: #F5F0E8;
+      --text-muted: #7A8699;
+      --border-gold: rgba(201,168,76,0.3);
+      --glow: 0 0 40px rgba(201,168,76,0.15);
+    }
+
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    html { scroll-behavior: smooth; }
+    body {
+      font-family: 'Outfit', sans-serif;
+      background: var(--ink);
+      color: var(--white);
+      overflow-x: hidden;
+      min-height: 100vh;
+    }
+
+    /* NOISE TEXTURE */
+    body::before {
+      content: '';
+      position: fixed;
+      inset: 0;
+      background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 512 512' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.75' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='0.04'/%3E%3C/svg%3E");
+      pointer-events: none;
+      z-index: 0;
+      opacity: 0.4;
+    }
+
+    ::-webkit-scrollbar { width: 4px; }
+    ::-webkit-scrollbar-track { background: var(--ink); }
+    ::-webkit-scrollbar-thumb { background: var(--gold-dark); border-radius: 2px; }
+
+    /* BACK BUTTON */
+    .back-nav {
+      position: fixed;
+      top: 24px;
+      left: 28px;
+      z-index: 100;
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      padding: 10px 18px;
+      background: rgba(10,22,40,0.8);
+      backdrop-filter: blur(12px);
+      border: 1px solid var(--border-gold);
+      border-radius: 40px;
+      font-size: 13px;
+      font-weight: 600;
+      color: var(--gold);
+      text-decoration: none;
+      transition: all 0.3s ease;
+    }
+    .back-nav:hover { background: rgba(201,168,76,0.12); transform: translateX(-3px); }
+    .back-nav i { font-size: 12px; }
+
+    /* HERO */
+    .hero {
+      position: relative;
+      min-height: 60vh;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+      padding: 120px 24px 80px;
+      overflow: hidden;
+    }
+    .hero-bg-radial {
+      position: absolute;
+      inset: 0;
+      background:
+        radial-gradient(ellipse 70% 50% at 50% 0%, rgba(201,168,76,0.12) 0%, transparent 70%),
+        radial-gradient(ellipse 40% 40% at 80% 80%, rgba(26,52,96,0.4) 0%, transparent 60%),
+        linear-gradient(180deg, #06101E 0%, #0A1628 60%, #06101E 100%);
+    }
+    .hero-lines {
+      position: absolute;
+      inset: 0;
+      overflow: hidden;
+      pointer-events: none;
+    }
+    .hero-lines::before {
+      content: '';
+      position: absolute;
+      top: -100px; left: -100px; right: -100px; bottom: -100px;
+      background: repeating-linear-gradient(
+        -45deg,
+        transparent,
+        transparent 60px,
+        rgba(201,168,76,0.025) 60px,
+        rgba(201,168,76,0.025) 61px
+      );
+    }
+    .hero-content { position: relative; z-index: 2; max-width: 760px; }
+    .hero-eyebrow {
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+      font-family: 'DM Mono', monospace;
+      font-size: 11px;
+      font-weight: 500;
+      color: var(--gold);
+      letter-spacing: 4px;
+      text-transform: uppercase;
+      margin-bottom: 24px;
+      padding: 8px 20px;
+      border: 1px solid var(--border-gold);
+      border-radius: 40px;
+      background: rgba(201,168,76,0.06);
+    }
+    .hero-eyebrow span { width: 20px; height: 1px; background: var(--gold); }
+    .hero-title {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: clamp(3rem, 8vw, 6rem);
+      font-weight: 700;
+      line-height: 1;
+      letter-spacing: -1px;
+      margin-bottom: 20px;
+    }
+    .hero-title .line1 { color: var(--white); display: block; }
+    .hero-title .line2 {
+      display: block;
+      background: linear-gradient(135deg, var(--gold-dark), var(--gold), var(--gold-light));
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+      font-style: italic;
+    }
+    .hero-desc {
+      font-size: 16px;
+      line-height: 1.75;
+      color: rgba(255,255,255,0.55);
+      max-width: 520px;
+      margin: 0 auto;
+    }
+
+    /* STATS BAR */
+    .stats-bar {
+      position: relative;
+      z-index: 2;
+      display: flex;
+      justify-content: center;
+      gap: 48px;
+      padding: 32px 24px;
+      border-top: 1px solid rgba(255,255,255,0.05);
+      border-bottom: 1px solid rgba(255,255,255,0.05);
+      background: rgba(255,255,255,0.02);
+      flex-wrap: wrap;
+    }
+    .stat-item { text-align: center; }
+    .stat-num {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 2.2rem;
+      font-weight: 700;
+      color: var(--gold);
+      display: block;
+      line-height: 1;
+    }
+    .stat-label {
+      font-size: 11px;
+      color: rgba(255,255,255,0.4);
+      text-transform: uppercase;
+      letter-spacing: 2px;
+      margin-top: 4px;
+      display: block;
+    }
+
+    /* MAIN CONTENT */
+    .main-content {
+      padding: 60px 24px 100px;
+      max-width: 1280px;
+      margin: 0 auto;
+      position: relative;
+      z-index: 2;
+    }
+
+    /* TOOLBAR */
+    .toolbar {
+      display: flex;
+      align-items: center;
+      gap: 16px;
+      margin-bottom: 36px;
+      flex-wrap: wrap;
+    }
+    .search-wrap {
+      flex: 1;
+      min-width: 240px;
+      position: relative;
+    }
+    .search-wrap i {
+      position: absolute;
+      left: 16px;
+      top: 50%;
+      transform: translateY(-50%);
+      color: var(--gold);
+      font-size: 13px;
+    }
+    .search-input {
+      width: 100%;
+      padding: 12px 16px 12px 42px;
+      background: rgba(255,255,255,0.04);
+      border: 1px solid rgba(255,255,255,0.1);
+      border-radius: 40px;
+      color: var(--white);
+      font-family: 'Outfit', sans-serif;
+      font-size: 14px;
+      outline: none;
+      transition: all 0.3s;
+    }
+    .search-input::placeholder { color: rgba(255,255,255,0.3); }
+    .search-input:focus {
+      border-color: var(--border-gold);
+      background: rgba(201,168,76,0.05);
+    }
+
+    .view-toggle {
+      display: flex;
+      gap: 4px;
+      background: rgba(255,255,255,0.04);
+      border: 1px solid rgba(255,255,255,0.08);
+      border-radius: 40px;
+      padding: 4px;
+    }
+    .view-btn {
+      width: 36px;
+      height: 36px;
+      border-radius: 50%;
+      background: transparent;
+      border: none;
+      color: rgba(255,255,255,0.4);
+      cursor: pointer;
+      font-size: 14px;
+      transition: all 0.25s;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+    .view-btn.active {
+      background: linear-gradient(135deg, var(--gold-dark), var(--gold));
+      color: var(--navy);
+    }
+
+    /* FILTER CHIPS */
+    .filter-bar {
+      display: flex;
+      gap: 10px;
+      flex-wrap: wrap;
+      margin-bottom: 36px;
+    }
+    .filter-chip {
+      padding: 7px 18px;
+      border-radius: 40px;
+      font-size: 12px;
+      font-weight: 600;
+      cursor: pointer;
+      border: 1px solid rgba(255,255,255,0.12);
+      background: transparent;
+      color: rgba(255,255,255,0.5);
+      transition: all 0.25s;
+    }
+    .filter-chip:hover { border-color: var(--border-gold); color: var(--gold); }
+    .filter-chip.active {
+      background: rgba(201,168,76,0.12);
+      border-color: var(--gold);
+      color: var(--gold);
+    }
+
+    /* SECTION LABEL */
+    .section-label {
+      display: flex;
+      align-items: center;
+      gap: 16px;
+      margin-bottom: 32px;
+    }
+    .section-label-text {
+      font-family: 'DM Mono', monospace;
+      font-size: 11px;
+      color: var(--gold);
+      text-transform: uppercase;
+      letter-spacing: 3px;
+      white-space: nowrap;
+    }
+    .section-label-line {
+      flex: 1;
+      height: 1px;
+      background: linear-gradient(90deg, var(--border-gold), transparent);
+    }
+
+    /* GRID VIEW */
+    .agent-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+      gap: 24px;
+    }
+
+    .agent-card {
+      background: rgba(255,255,255,0.03);
+      border: 1px solid rgba(255,255,255,0.07);
+      border-radius: 20px;
+      padding: 28px 24px 24px;
+      transition: all 0.4s ease;
+      position: relative;
+      overflow: hidden;
+      display: flex;
+      flex-direction: column;
+      gap: 20px;
+    }
+    .agent-card::before {
+      content: '';
+      position: absolute;
+      top: 0; left: 0; right: 0;
+      height: 2px;
+      background: linear-gradient(90deg, transparent, var(--gold), transparent);
+      opacity: 0;
+      transition: opacity 0.4s;
+    }
+    .agent-card:hover {
+      border-color: var(--border-gold);
+      transform: translateY(-6px);
+      box-shadow: 0 24px 60px rgba(0,0,0,0.5), var(--glow);
+    }
+    .agent-card:hover::before { opacity: 1; }
+
+    /* Rank badge top-right */
+    .rank-badge {
+      position: absolute;
+      top: 16px;
+      right: 16px;
+      font-family: 'DM Mono', monospace;
+      font-size: 10px;
+      color: var(--gold);
+      opacity: 0.5;
+    }
+
+    .agent-avatar-wrap {
+      display: flex;
+      align-items: center;
+      gap: 16px;
+    }
+    .agent-avatar {
+      width: 64px;
+      height: 64px;
+      border-radius: 50%;
+      border: 2px solid var(--border-gold);
+      overflow: hidden;
+      flex-shrink: 0;
+      position: relative;
+      background: linear-gradient(135deg, var(--navy-light), var(--navy-mid));
+    }
+
+    .agent-avatar img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      display: block;
+    }
+    .avatar-online {
+      position: absolute;
+      bottom: 2px;
+      right: 2px;
+      width: 12px;
+      height: 12px;
+      border-radius: 50%;
+      background: #4CAF50;
+      border: 2px solid var(--ink);
+    }
+
+    .agent-identity { flex: 1; min-width: 0; }
+    .agent-name {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 1.2rem;
+      font-weight: 700;
+      color: var(--white);
+      line-height: 1.2;
+      margin-bottom: 4px;
+    }
+    .agent-title {
+      font-size: 11px;
+      color: var(--gold);
+      text-transform: uppercase;
+      letter-spacing: 1.5px;
+      font-weight: 600;
+    }
+
+    /* Specialisation tags */
+    .agent-tags {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 6px;
+    }
+    .agent-tag {
+      font-size: 10px;
+      font-weight: 600;
+      padding: 3px 10px;
+      border-radius: 40px;
+      border: 1px solid rgba(201,168,76,0.25);
+      color: rgba(201,168,76,0.7);
+      background: rgba(201,168,76,0.06);
+      letter-spacing: 0.5px;
+    }
+
+    /* Contact buttons */
+    .agent-actions {
+      display: flex;
+      gap: 10px;
+    }
+    .btn-wa {
+      flex: 1;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 8px;
+      padding: 11px 16px;
+      background: linear-gradient(135deg, #1a7a3e, #25a655);
+      color: var(--white);
+      border-radius: 10px;
+      font-size: 13px;
+      font-weight: 700;
+      text-decoration: none;
+      border: none;
+      cursor: pointer;
+      transition: all 0.25s;
+    }
+    .btn-wa:hover { filter: brightness(1.15); transform: scale(1.02); }
+    .btn-call {
+      width: 44px;
+      height: 44px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      background: rgba(201,168,76,0.1);
+      border: 1px solid var(--border-gold);
+      border-radius: 10px;
+      color: var(--gold);
+      text-decoration: none;
+      font-size: 16px;
+      transition: all 0.25s;
+      flex-shrink: 0;
+    }
+    .btn-call:hover { background: rgba(201,168,76,0.2); }
+
+    /* Divider */
+    .card-divider {
+      height: 1px;
+      background: rgba(255,255,255,0.05);
+    }
+
+    /* Phone display */
+    .agent-phone-row {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+    .agent-phone-row i {
+      font-size: 12px;
+      color: var(--gold);
+      opacity: 0.7;
+      width: 16px;
+    }
+    .agent-phone {
+      font-family: 'DM Mono', monospace;
+      font-size: 13px;
+      color: rgba(255,255,255,0.55);
+      letter-spacing: 0.5px;
+    }
+    .agent-area {
+      font-size: 12px;
+      color: rgba(255,255,255,0.35);
+      margin-left: auto;
+    }
+
+    /* LIST VIEW */
+    .agent-list {
+      display: flex;
+      flex-direction: column;
+      gap: 1px;
+      border: 1px solid rgba(255,255,255,0.07);
+      border-radius: 16px;
+      overflow: hidden;
+    }
+    .agent-list-row {
+      display: grid;
+      grid-template-columns: 56px 1fr 180px 160px auto;
+      align-items: center;
+      gap: 16px;
+      padding: 16px 24px;
+      background: rgba(255,255,255,0.02);
+      border-bottom: 1px solid rgba(255,255,255,0.04);
+      transition: all 0.25s;
+    }
+    .agent-list-row:last-child { border-bottom: none; }
+    .agent-list-row:hover {
+      background: rgba(201,168,76,0.05);
+      padding-left: 28px;
+    }
+    .list-avatar {
+      width: 40px;
+      height: 40px;
+      border-radius: 50%;
+      overflow: hidden;
+      border: 1px solid var(--border-gold);
+      flex-shrink: 0;
+    }
+
+    .list-avatar img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      display: block;
+    }
+    .list-name {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 1.05rem;
+      font-weight: 600;
+      color: var(--white);
+    }
+    .list-name-sub {
+      font-size: 11px;
+      color: rgba(255,255,255,0.35);
+      margin-top: 2px;
+    }
+    .list-phone {
+      font-family: 'DM Mono', monospace;
+      font-size: 12px;
+      color: rgba(255,255,255,0.5);
+    }
+    .list-tags { display: flex; gap: 5px; flex-wrap: wrap; }
+    .list-tag {
+      font-size: 9px;
+      font-weight: 600;
+      padding: 2px 8px;
+      border-radius: 40px;
+      border: 1px solid rgba(201,168,76,0.2);
+      color: rgba(201,168,76,0.6);
+    }
+    .list-actions { display: flex; gap: 8px; }
+    .list-btn {
+      padding: 7px 14px;
+      border-radius: 8px;
+      font-size: 12px;
+      font-weight: 700;
+      text-decoration: none;
+      border: none;
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      gap: 6px;
+      white-space: nowrap;
+    }
+    .list-btn-wa {
+      background: linear-gradient(135deg, #1a7a3e, #25a655);
+      color: var(--white);
+      transition: filter 0.2s;
+    }
+    .list-btn-wa:hover { filter: brightness(1.15); }
+    .list-btn-call {
+      background: rgba(201,168,76,0.1);
+      border: 1px solid var(--border-gold);
+      color: var(--gold);
+      transition: background 0.2s;
+    }
+    .list-btn-call:hover { background: rgba(201,168,76,0.2); }
+
+    /* EMPTY STATE */
+    .empty-state {
+      text-align: center;
+      padding: 80px 24px;
+      color: rgba(255,255,255,0.3);
+    }
+    .empty-state i { font-size: 48px; color: var(--gold); opacity: 0.3; margin-bottom: 16px; display: block; }
+    .empty-state p { font-size: 15px; }
+
+    /* FOOTER */
+    .page-footer {
+      background: rgba(255,255,255,0.02);
+      border-top: 1px solid rgba(255,255,255,0.05);
+      padding: 32px 24px;
+      text-align: center;
+      position: relative;
+      z-index: 2;
+    }
+    .page-footer a { color: var(--gold); font-weight: 600; text-decoration: none; }
+    .page-footer p { font-size: 13px; color: rgba(255,255,255,0.3); }
+
+    /* Responsive */
+    @media(max-width: 900px) {
+      .agent-list-row {
+        grid-template-columns: 40px 1fr auto;
+      }
+      .list-phone, .list-tags { display: none; }
+    }
+    @media(max-width: 640px) {
+      .agent-grid { grid-template-columns: 1fr; }
+      .hero-title { font-size: 3rem; }
+      .stats-bar { gap: 28px; }
+    }
+  </style>
+</head>
+<body>
+
+  <a href="index.html" class="back-nav"><i class="fas fa-arrow-left"></i> Kembali ke Laman Utama</a>
+
+  <!-- HERO -->
+  <section class="hero">
+    <div class="hero-bg-radial"></div>
+    <div class="hero-lines"></div>
+    <div class="hero-content">
+      <div class="hero-eyebrow">
+        <span></span>
+        IHA GROUP — Pasukan Profesional
+        <span></span>
+      </div>
+      <h1 class="hero-title">
+        <span class="line1">Senarai</span>
+        <span class="line2">Ejen Kami</span>
+      </h1>
+      <p class="hero-desc">Hubungi ejen bertauliah IHA GROUP yang berpengalaman dalam bidang insurans, takaful, pelaburan dan pengurusan harta pusaka.</p>
+    </div>
+  </section>
+
+  <!-- STATS BAR -->
+  <div class="stats-bar">
+    <div class="stat-item">
+      <span class="stat-num" id="totalAgents">0</span>
+      <span class="stat-label">Jumlah Ejen</span>
+    </div>
+    <div class="stat-item">
+      <span class="stat-num">3</span>
+      <span class="stat-label">Syarikat Panel</span>
+    </div>
+    <div class="stat-item">
+      <span class="stat-num">5+</span>
+      <span class="stat-label">Negeri Diliputi</span>
+    </div>
+    <div class="stat-item">
+      <span class="stat-num">BNM</span>
+      <span class="stat-label">Bertauliah</span>
+    </div>
+  </div>
+
+  <!-- MAIN -->
+  <div class="main-content">
+
+    <!-- TOOLBAR -->
+    <div class="toolbar">
+      <div class="search-wrap">
+        <i class="fas fa-search"></i>
+        <input type="text" class="search-input" id="searchInput" placeholder="Cari nama ejen atau nombor telefon..." oninput="filterAll()" />
+      </div>
+      <div class="view-toggle">
+        <button class="view-btn active" id="btnGrid" onclick="setView('grid')" title="Grid"><i class="fas fa-th-large"></i></button>
+        <button class="view-btn" id="btnList" onclick="setView('list')" title="List"><i class="fas fa-list"></i></button>
+      </div>
+    </div>
+
+    <!-- FILTER CHIPS -->
+    <div class="filter-bar">
+      <button class="filter-chip active" onclick="setFilter('semua', this)">Semua</button>
+      <!-- <button class="filter-chip" onclick="setFilter('insurans', this)">Insurans</button>
+      <button class="filter-chip" onclick="setFilter('takaful', this)">Takaful</button>
+      <button class="filter-chip" onclick="setFilter('pelaburan', this)">Pelaburan</button>
+      <button class="filter-chip" onclick="setFilter('pusaka', this)">Harta &amp; Pusaka</button> -->
+    </div>
+
+    <!-- LABEL -->
+    <div class="section-label">
+      <span class="section-label-text">Agent Aktif</span>
+      <div class="section-label-line"></div>
+      <span class="section-label-text" id="countLabel">0 Ejen</span>
+    </div>
+
+    <!-- GRID -->
+    <div class="agent-grid" id="agentGrid"></div>
+
+    <!-- LIST -->
+    <div class="agent-list" id="agentList" style="display:none;"></div>
+
+    <!-- EMPTY -->
+    <div class="empty-state" id="emptyState" style="display:none;">
+      <i class="fas fa-user-slash"></i>
+      <p>Tiada agent dijumpai untuk carian ini.</p>
+    </div>
+
+  </div>
+
+  <!-- FOOTER -->
+  <div class="page-footer">
+    <p>© 2025 <a href="index.html">IHA GROUP Financial Services</a> — Semua hak cipta terpelihara.</p>
+  </div>
+
+  <script>
+    // ══════════════════════════════════════════════
+    //  DATA EJEN — TAMBAH / EDIT DI SINI
+    // ══════════════════════════════════════════════
+    const agents = [
+      {
+        id: 1,
+        name: 'SUHAINI BINTI MOHD ALI',
+        title: 'Agent',
+        phone: '019-772 1260',
+        area: 'Muar, Johor',
+        image: 'suhaini.jpg',
+        tags: ['Insurans', 'Takaful', 'Pelaburan', 'Pusaka'],
+      },
+      {
+        id: 2,
+        name: 'NOR ASMAH BINTI ZAKARIA',
+        title: 'Agent',
+        phone: '011-6550 3003',
+        area: 'Muar, Johor',
+        image: 'asmah.jpg',
+        tags: ['Takaful', 'Pelaburan','Insurans', 'Takaful', 'Pelaburan'],
+      },
+      {
+        id: 3,
+        name: 'PARAMESWARI A/P KRISHNAN',
+        title: 'Agent',
+        phone: '016-343 7409',
+        area: 'Muar, Johor',
+        image: 'parameswari.jpg',
+        tags: ['Takaful', 'Pelaburan','Insurans', 'Takaful', 'Pelaburan'],
+      },
+      {
+        id: 4,
+        name: 'NORSHIDA BINTI SALLEHAN',
+        title: 'Agent',
+        phone: '018-660 4093',
+        area: 'Muar, Johor',
+        image: 'norshida.jpg',
+        tags: ['Takaful', 'Pelaburan','Insurans', 'Takaful', 'Pelaburan'],
+      },
+      {
+        id: 5,
+        name: 'SAFIA BINTI MOHAMED',
+        title: 'Agent',
+        phone: '016-400 4119',
+        area: 'Muar, Johor',
+        image: 'safia.jpg',
+        tags: ['Takaful', 'Pelaburan','Insurans', 'Takaful', 'Pelaburan'],
+      },
+      {
+        id: 6,
+        name: 'LOGESWARI A/P VIKNEES BARAN',
+        title: 'Agent',
+        phone: '011-3512 0302',
+        area: 'Muar, Johor',
+        image: 'logeswari.jpg',
+        tags: ['Takaful', 'Pelaburan','Insurans', 'Takaful', 'Pelaburan'],
+      },
+      {
+        id: 7,
+        name: 'ROHANA BINTI ADNAN',
+        title: 'Agent',
+        phone: '013-360 6601',
+        area: 'Muar, Johor',
+        image: 'rohana.jpeg',
+        tags: ['Takaful', 'Pelaburan','Insurans', 'Takaful', 'Pelaburan'],
+      },
+    ];
+
+    // ══════════════════════════════════════════════
+    //  STATE
+    // ══════════════════════════════════════════════
+    let currentFilter = 'semua';
+    let currentView   = 'grid';
+
+    // Inisial dari nama
+    function initials(name) {
+      return name.split(' ').filter(Boolean).slice(0, 2).map(w => w[0].toUpperCase()).join('');
+    }
+
+    // Format nombor untuk WhatsApp (buang 0, tambah 60)
+    function waNumber(phone) {
+      const clean = phone.replace(/\D/g, '');
+      return clean.startsWith('0') ? '60' + clean.slice(1) : clean;
+    }
+
+    // Format nombor untuk papar
+    function formatPhone(phone) {
+      const c = phone.replace(/\D/g, '');
+      if (c.length === 11) return c.slice(0,4) + '-' + c.slice(4,7) + ' ' + c.slice(7);
+      if (c.length === 10) return c.slice(0,3) + '-' + c.slice(3,6) + ' ' + c.slice(6);
+      return phone;
+    }
+
+    // Tags lowercase untuk filter
+    function tagLow(tags) {
+      return tags.map(t => t.toLowerCase());
+    }
+
+    // ══════════════════════════════════════════════
+    //  FILTER & SEARCH
+    // ══════════════════════════════════════════════
+    function getFiltered() {
+      const q = document.getElementById('searchInput').value.toLowerCase();
+      return agents.filter(a => {
+        const matchFilter = currentFilter === 'semua' || tagLow(a.tags).includes(currentFilter);
+        const matchSearch = !q || a.name.toLowerCase().includes(q) || a.phone.includes(q) || (a.area||'').toLowerCase().includes(q);
+        return matchFilter && matchSearch;
+      });
+    }
+
+    function setFilter(f, btn) {
+      currentFilter = f;
+      document.querySelectorAll('.filter-chip').forEach(c => c.classList.remove('active'));
+      btn.classList.add('active');
+      render();
+    }
+
+    function filterAll() { render(); }
+
+    function setView(v) {
+      currentView = v;
+      document.getElementById('btnGrid').classList.toggle('active', v === 'grid');
+      document.getElementById('btnList').classList.toggle('active', v === 'list');
+      document.getElementById('agentGrid').style.display = v === 'grid' ? 'grid' : 'none';
+      document.getElementById('agentList').style.display = v === 'list' ? 'flex' : 'none';
+      render();
+    }
+
+    // ══════════════════════════════════════════════
+    //  RENDER
+    // ══════════════════════════════════════════════
+    function render() {
+      const filtered = getFiltered();
+      document.getElementById('countLabel').textContent = filtered.length + ' Ejen';
+      document.getElementById('emptyState').style.display = filtered.length === 0 ? 'block' : 'none';
+
+      if (currentView === 'grid') {
+        document.getElementById('agentGrid').innerHTML = filtered.map((a, i) => `
+          <div class="agent-card">
+            <span class="rank-badge">#${String(i+1).padStart(2,'0')}</span>
+
+            <div class="agent-avatar-wrap">
+              <div class="agent-avatar">
+                <img src="${a.image}" alt="${a.name}">
+                <div class="avatar-online"></div>
+              </div>
+              <div class="agent-identity">
+                <div class="agent-name">${a.name}</div>
+                <div class="agent-title">${a.title}</div>
+              </div>
+            </div>
+
+            <div class="agent-tags">
+              ${a.tags.map(t => `<span class="agent-tag">${t}</span>`).join('')}
+            </div>
+
+            <div class="card-divider"></div>
+
+            <div class="agent-phone-row">
+              <i class="fas fa-phone"></i>
+              <span class="agent-phone">${formatPhone(a.phone)}</span>
+              <span class="agent-area">${a.area || ''}</span>
+            </div>
+
+            <div class="agent-actions">
+              <a class="btn-wa" href="https://wa.me/${waNumber(a.phone)}?text=Assalamualaikum%20${encodeURIComponent(a.name)},%20saya%20ingin%20mendapatkan%20maklumat%20lanjut%20berkenaan%20perkhidmatan%20IHA%20GROUP." target="_blank">
+                <i class="fab fa-whatsapp"></i> WhatsApp
+              </a>
+              <a class="btn-call" href="tel:${a.phone}" title="Telefon">
+                <i class="fas fa-phone"></i>
+              </a>
+            </div>
+          </div>
+        `).join('');
+      } else {
+        document.getElementById('agentList').innerHTML = filtered.map((a, i) => `
+          <div class="agent-list-row">
+            <div class="list-avatar">
+              <img src="${a.image}" alt="${a.name}">
+            </div>
+            <div>
+              <div class="list-name">${a.name}</div>
+              <div class="list-name-sub">${a.title} · ${a.area || ''}</div>
+            </div>
+            <div class="list-phone">${formatPhone(a.phone)}</div>
+            <div class="list-tags">
+              ${a.tags.map(t => `<span class="list-tag">${t}</span>`).join('')}
+            </div>
+            <div class="list-actions">
+              <a class="list-btn list-btn-wa" href="https://wa.me/${waNumber(a.phone)}?text=Assalamualaikum%20${encodeURIComponent(a.name)},%20saya%20ingin%20mendapatkan%20maklumat%20lanjut%20berkenaan%20perkhidmatan%20IHA%20GROUP." target="_blank">
+                <i class="fab fa-whatsapp"></i> WhatsApp
+              </a>
+              <a class="list-btn list-btn-call" href="tel:${a.phone}">
+                <i class="fas fa-phone"></i> Panggil
+              </a>
+            </div>
+          </div>
+        `).join('');
+      }
+    }
+
+    // INIT
+    document.getElementById('totalAgents').textContent = agents.length;
+    render();
+  </script>
+</body>
+</html>
