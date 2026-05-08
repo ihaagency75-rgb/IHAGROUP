@@ -402,7 +402,7 @@
     .mobile-sub a { display: block; padding: 9px 0; font-size: 14px; color: var(--text-muted); border-bottom: 1px solid var(--cream); z-index: 10000;}
     .mobile-cta { margin-top: 28px; }
 
-    /* ===== RESPONSIVE ===== */
+    /* ===== RESPONSIVE — TABLET (max 1024px) ===== */
     @media(max-width:1024px) {
       .hero .container { grid-template-columns: 1fr; gap: 40px; }
       .hero-cards { grid-template-columns: 1fr; }
@@ -412,20 +412,142 @@
       .footer-grid { grid-template-columns: 1fr 1fr; }
       .investment-grid { grid-template-columns: 1fr; }
     }
+
+    /* ===== RESPONSIVE — MOBILE (max 768px) ===== */
     @media(max-width:768px) {
+      /* Container padding */
+      .container { padding: 0 16px; }
+
+      /* Section padding */
+      section { padding: 60px 0; }
+
+      /* Topbar */
+      .topbar-left { display: none; }
+      .topbar .container { justify-content: flex-end; }
+
+      /* Navbar */
       .nav-menu { display: none; }
       .hamburger { display: flex; }
-      .topbar-left { display: none; }
-      .pusaka-grid { grid-template-columns: 1fr; }
-      .testimonials-grid { grid-template-columns: 1fr; }
-      .faq-grid { grid-template-columns: 1fr; }
+      .navbar .container { height: 60px; }
+      .logo-text .brand { font-size: 17px; }
+
+      /* Hero */
+      .hero { min-height: auto; padding: 40px 0 48px; }
+      .hero .container { grid-template-columns: 1fr; gap: 32px; padding-top: 32px; padding-bottom: 32px; }
+      .hero-title { font-size: clamp(1.8rem, 7vw, 2.6rem); }
+      .hero-desc { font-size: 14px; margin-bottom: 24px; }
+      .hero-btns { flex-direction: column; gap: 12px; }
+      .hero-btns .btn { width: 100%; justify-content: center; }
+      .hero-stats { grid-template-columns: repeat(3,1fr); }
+      .hero-stat { padding: 14px 8px; }
+      .hero-stat .num { font-size: 1.4rem; }
+      .hero-stat .label { font-size: 9px; }
+      .hero-badge { font-size: 10px; padding: 6px 12px; letter-spacing: 1px; }
+
+      /* Hero cards — horizontal scroll on mobile */
+      .hero-cards { display: flex; flex-direction: column; gap: 10px; }
+      .hero-card { padding: 14px 16px; gap: 12px; }
+      .hero-card-icon { width: 40px; height: 40px; }
+      .hero-card-title { font-size: 13px; }
+      .hero-card-sub { font-size: 11px; }
+
+      /* Services */
+      .services-grid { grid-template-columns: 1fr; gap: 16px; }
+      .service-card { padding: 24px 20px; }
+
+      /* Insurance grid */
+      .insurance-grid { grid-template-columns: 1fr; gap: 16px; }
+
+      /* Takaful inner grid */
+      #takaful > div > div { grid-template-columns: 1fr !important; gap: 24px !important; padding: 28px 20px !important; }
+      #takaful .takaful-sub-grid { grid-template-columns: 1fr 1fr !important; }
+
+      /* Why us */
+      .why-grid { grid-template-columns: 1fr; gap: 40px; }
+      .why-right { grid-template-columns: 1fr 1fr; gap: 12px; }
+      .why-right .stat-card:nth-child(2),
+      .why-right .stat-card:nth-child(4) { margin-top: 0; }
+      .stat-card { padding: 20px 16px; }
+      .stat-num { font-size: 2rem; }
+
+      /* Investment */
+      .investment-grid { grid-template-columns: 1fr; gap: 32px; }
+      .investment-types { grid-template-columns: 1fr; gap: 12px; }
+
+      /* Pusaka */
+      .pusaka-grid { grid-template-columns: 1fr; gap: 16px; }
+      .pusaka-card { padding: 24px 20px; }
+
+      /* Pusaka CTA */
+      #pusaka > .container > div:last-child { flex-direction: column; text-align: center; }
+      #pusaka > .container > div:last-child .btn { width: 100%; justify-content: center; }
+
+      /* Testimonials */
+      .testimonials-grid { grid-template-columns: 1fr; gap: 16px; }
+
+      /* FAQ */
+      .faq-grid { grid-template-columns: 1fr; gap: 32px; }
+
+      /* Partners */
+      .partners-row { gap: 12px; }
+      .partner-logo { padding: 12px 16px; }
+      .partner-logo span { font-size: 12px; }
+
+      /* Footer */
+      .footer-grid { grid-template-columns: 1fr; gap: 32px; }
+      .footer-main { padding: 48px 0 32px; }
+      .footer-bottom-inner { flex-direction: column; text-align: center; gap: 8px; }
+
+      /* CTA Banner */
+      .cta-banner { padding: 48px 0; }
+      .cta-btns { flex-direction: column; align-items: center; gap: 12px; }
+      .cta-btn-white, .cta-btn-ghost { width: 100%; max-width: 320px; text-align: center; justify-content: center; display: flex; }
+      .cta-inner p { font-size: 14px; }
+
+      /* WhatsApp float — smaller on mobile */
+      .whatsapp-float { bottom: 76px; right: 16px; }
+      .whatsapp-float a { padding: 10px 14px; font-size: 12px; }
+      .back-top { bottom: 20px; right: 16px; width: 40px; height: 40px; font-size: 14px; }
+
+      /* Section titles */
+      .section-title { font-size: clamp(1.6rem, 6vw, 2.2rem); }
+
+      /* Section header */
+      .section-header { margin-bottom: 36px; }
+
+      /* Form */
       .form-grid { grid-template-columns: 1fr; }
-      .footer-grid { grid-template-columns: 1fr; }
-      .hero-stats { grid-template-columns: 1fr 1fr 1fr; }
+      .contact-form { padding: 24px 16px; }
+      .contact-grid { grid-template-columns: 1fr; gap: 32px; }
+    }
+
+    /* ===== RESPONSIVE — SMALL MOBILE (max 480px) ===== */
+    @media(max-width:480px) {
+      .container { padding: 0 14px; }
+
+      .hero-stats { gap: 0; }
+      .hero-stat { padding: 12px 6px; }
+      .hero-stat .num { font-size: 1.2rem; }
+      .hero-stat .label { font-size: 8px; letter-spacing: 0; }
+
       .why-right { grid-template-columns: 1fr 1fr; }
-      .why-right .stat-card:nth-child(2), .why-right .stat-card:nth-child(4) { margin-top: 0; }
-      .footer-bottom-inner { flex-direction: column; text-align: center; }
-      .investment-types { grid-template-columns: 1fr; }
+
+      /* Marquee smaller text */
+      .marquee-item { font-size: 11px; padding: 0 20px; }
+
+      /* Insurance cards compact */
+      .insurer-header { padding: 20px 20px 16px; }
+      .insurer-body { padding: 18px 20px; }
+      .insurer-footer { padding: 12px 20px 18px; }
+
+      /* Partners wrap nicely */
+      .partners-row { gap: 10px; }
+      .partner-logo { padding: 10px 14px; gap: 7px; }
+      .partner-logo i { font-size: 18px; }
+      .partner-logo span { font-size: 11px; }
+
+      /* Footer columns stacked */
+      .footer-grid { grid-template-columns: 1fr; }
     }
   </style>
 </head>
@@ -482,8 +604,6 @@
         <div class="dropdown">
           <div class="dropdown-header">Emas & Perak</div>
           <a class="dropdown-item" href="pelaburan"><i class="fas fa-coins"></i> Pelaburan Emas</a>
-          <!-- <a class="dropdown-item" href="#pelaburan"><i class="fas fa-circle-dot"></i> Pelaburan Perak</a>
-          <a class="dropdown-item" href="#pelaburan"><i class="fas fa-chart-line"></i> Harga Semasa</a> -->
         </div>
       </li>
 
@@ -498,14 +618,11 @@
         </div>
       </li>
 
-
       <li class="nav-item">
         <a href="marketing.html" class="nav-link">Marketing <i class="fas fa-chevron-down"></i></a>
       </li>
 
-
       <li class="nav-item"><a href="#kenapa-kami" class="nav-link">Tentang Kami</a></li>
-      <!-- <li class="nav-item"><a href="#faq" class="nav-link">Soalan Lazim</a></li> -->
       <li class="nav-item"><a href="https://wa.me/60137206979" class="nav-link nav-cta">Hubungi Kami</a></li>
     </ul>
 
@@ -581,7 +698,6 @@
       </h1>
       <p class="hero-desc">Perkhidmatan insurans, takaful, pelaburan emas & perak, serta pengurusan harta pusaka yang komprehensif dan amanah. Kami hadir untuk memastikan keselamatan kewangan anda dan keluarga.</p>
       <div class="hero-btns">
-        <!-- <a href="#hubungi" class="btn btn-primary"><i class="fas fa-phone"></i> Dapatkan Sebutan Harga</a> -->
         <a href="#perkhidmatan" class="btn btn-outline"><i class="fas fa-arrow-right"></i> Lihat Perkhidmatan</a>
       </div>
       <div class="hero-stats">
@@ -758,7 +874,6 @@
           </div>
         </div>
         <div class="insurer-footer">
-          <!-- <button class="insurer-btn primary" onclick="scrollToContact()">Dapatkan Sebutan</button> -->
           <button class="insurer-btn secondary" onclick="scrollToContact()">Maklumat Lanjut</button>
         </div>
       </div>
@@ -786,7 +901,6 @@
           </div>
         </div>
         <div class="insurer-footer">
-          <!-- <button class="insurer-btn primary" onclick="scrollToContact()">Dapatkan Sebutan</button> -->
           <button class="insurer-btn secondary" onclick="scrollToContact()">Maklumat Lanjut</button>
         </div>
       </div>
@@ -814,7 +928,6 @@
           </div>
         </div>
         <div class="insurer-footer">
-          <!-- <button class="insurer-btn primary" onclick="scrollToContact()">Dapatkan Sebutan</button> -->
           <button class="insurer-btn secondary" onclick="scrollToContact()">Maklumat Lanjut</button>
         </div>
       </div>
@@ -967,63 +1080,6 @@
         </div>
         <a href="#hubungi" class="btn btn-dark"><i class="fas fa-chart-line"></i> Mula Pelaburan Sekarang</a>
       </div>
-
-      <!-- <div data-aos="fade-left">
-        <div class="price-ticker">
-          <div class="ticker-header">
-            <div class="ticker-title">📊 Harga Pasaran (MYR)</div>
-            <div class="ticker-live">LIVE</div>
-          </div>
-          <div class="ticker-items">
-            <div class="ticker-item">
-              <div class="ticker-left">
-                <div class="ticker-dot gold"></div>
-                <div>
-                  <div class="ticker-name">Emas 999</div>
-                  <div class="ticker-unit">per gram</div>
-                </div>
-              </div>
-              <div class="ticker-right">
-                <div class="ticker-price" id="gold-price">RM 390.00</div>
-                <div class="ticker-change up" id="gold-change">▲ +1.2%</div>
-              </div>
-            </div>
-            <div class="ticker-item">
-              <div class="ticker-left">
-                <div class="ticker-dot gold"></div>
-                <div>
-                  <div class="ticker-name">Emas 916</div>
-                  <div class="ticker-unit">per gram</div>
-                </div>
-              </div>
-              <div class="ticker-right">
-                <div class="ticker-price">RM 357.00</div>
-                <div class="ticker-change up">▲ +0.9%</div>
-              </div>
-            </div>
-            <div class="ticker-item">
-              <div class="ticker-left">
-                <div class="ticker-dot silver"></div>
-                <div>
-                  <div class="ticker-name">Perak 999</div>
-                  <div class="ticker-unit">per gram</div>
-                </div>
-              </div>
-              <div class="ticker-right">
-                <div class="ticker-price">RM 4.85</div>
-                <div class="ticker-change down">▼ -0.3%</div>
-              </div>
-            </div>
-          </div>
-          <div style="margin-top:20px;padding:16px;background:rgba(201,168,76,0.08);border-radius:10px;border:1px solid rgba(201,168,76,0.15);">
-            <div style="font-size:12px;color:var(--gold);font-weight:600;margin-bottom:6px;">💡 Tip Pakar</div>
-            <div style="font-size:12px;color:rgba(255,255,255,0.6);line-height:1.65;">Mulakan pelaburan emas dengan strategi Dollar Cost Averaging (DCA) — beli secara konsisten tanpa perlu risau tentang masa yang tepat.</div>
-          </div>
-          <div style="margin-top:16px;">
-            <button onclick="scrollToContact()" style="width:100%;padding:13px;background:var(--gold);color:var(--navy);font-weight:700;font-size:14px;border:none;border-radius:8px;cursor:pointer;transition:all 0.3s;" onmouseover="this.style.background='#E8C96A'" onmouseout="this.style.background='var(--gold)'">Hubungi Kami untuk Harga Terkini</button>
-          </div>
-        </div>
-      </div> -->
     </div>
   </div>
 </section>
@@ -1088,55 +1144,6 @@
   </div>
 </section>
 
-<!-- TESTIMONIALS -->
-<!-- <section class="testimonials">
-  <div class="container">
-    <div class="section-header center" data-aos="fade-up">
-      <div class="section-tag">Apa Kata Mereka</div>
-      <h2 class="section-title">Ulasan <span>Pelanggan Kami</span></h2>
-      <div class="gold-line"></div>
-    </div>
-    <div class="testimonials-grid">
-      <div class="testi-card" data-aos="fade-up" data-aos-delay="0">
-        <div class="testi-stars"><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i></div>
-        <p class="testi-text">"Saya sangat berpuas hati dengan perkhidmatan AsiaShield FS. Proses insurans kenderaan saya dengan Etiqa diselesaikan dalam masa 30 minit sahaja. Agen sangat profesional dan teliti menjelaskan setiap terma polisi."</p>
-        <div class="testi-author">
-          <div class="testi-avatar">A</div>
-          <div>
-            <div class="testi-name">Ahmad Faizal</div>
-            <div class="testi-role">Usahawan, Kuala Lumpur</div>
-            <div class="testi-service">Insurans Kenderaan Etiqa</div>
-          </div>
-        </div>
-      </div>
-      <div class="testi-card" data-aos="fade-up" data-aos-delay="100">
-        <div class="testi-stars"><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i></div>
-        <p class="testi-text">"Alhamdulillah, dengan bimbingan agen AsiaShield FS, saya berjaya mulakan pelaburan emas dan menyiapkan wasiat Islam dalam satu pakej. Mereka faham keperluan kami dari sudut kewangan Islam sepenuhnya."</p>
-        <div class="testi-author">
-          <div class="testi-avatar">S</div>
-          <div>
-            <div class="testi-name">Siti Nurhaliza</div>
-            <div class="testi-role">Guru, Selangor</div>
-            <div class="testi-service">Pelaburan Emas + Wasiat</div>
-          </div>
-        </div>
-      </div>
-      <div class="testi-card" data-aos="fade-up" data-aos-delay="200">
-        <div class="testi-stars"><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star-half-alt"></i></div>
-        <p class="testi-text">"Tuntutan insurans kereta saya dibantu sepenuhnya oleh pasukan AsiaShield FS. Mereka memandu saya setiap langkah dan tuntutan saya berjaya diselesaikan dalam masa yang singkat. Terima kasih!"</p>
-        <div class="testi-author">
-          <div class="testi-avatar">R</div>
-          <div>
-            <div class="testi-name">Raj Kumar</div>
-            <div class="testi-role">Jurutera, Johor Bahru</div>
-            <div class="testi-service">Insurans Kenderaan Zurich</div>
-          </div>
-        </div>
-      </div>
-    </div>
-  </div>
-</section> -->
-
 <!-- PARTNERS -->
 <section class="partners">
   <div class="container">
@@ -1151,94 +1158,6 @@
     </div>
   </div>
 </section>
-
-<!-- FAQ
-<section class="faq" id="faq">
-  <div class="container">
-    <div class="section-header" data-aos="fade-up">
-      <div class="section-tag">Soalan Lazim</div>
-      <h2 class="section-title">Soalan Yang <span>Sering Ditanya</span></h2>
-      <div class="gold-line"></div>
-    </div>
-    <div class="faq-grid">
-      <div class="faq-list" data-aos="fade-right">
-        <div class="faq-item">
-          <div class="faq-question" onclick="toggleFaq(this)">
-            Apakah perbezaan insurans komprehensif dan third party? <i class="fas fa-plus"></i>
-          </div>
-          <div class="faq-answer"><p>Insurans komprehensif melindungi kenderaan anda sendiri DAN pihak ketiga dalam sebarang kemalangan termasuk kecurian dan kebakaran. Insurans third party hanya melindungi kerosakan kepada kenderaan atau harta pihak ketiga sahaja, tidak kenderaan anda sendiri.</p></div>
-        </div>
-        <div class="faq-item">
-          <div class="faq-question" onclick="toggleFaq(this)">
-            Adakah takaful lebih baik daripada insurans konvensional? <i class="fas fa-plus"></i>
-          </div>
-          <div class="faq-answer"><p>Untuk umat Islam, takaful adalah pilihan yang lebih diutamakan kerana ia bebas dari riba, gharar, dan maisir. Dari segi perlindungan, kedua-duanya menawarkan manfaat yang setara. Pilihan bergantung kepada kepercayaan dan keutamaan peribadi anda.</p></div>
-        </div>
-        <div class="faq-item">
-          <div class="faq-question" onclick="toggleFaq(this)">
-            Bagaimana cara membuat tuntutan insurans kenderaan? <i class="fas fa-plus"></i>
-          </div>
-          <div class="faq-answer"><p>Dalam kes kemalangan: (1) Ambil gambar kejadian, (2) Buat laporan polis dalam 24 jam, (3) Hubungi kami segera dan kami akan pandu anda melalui proses tuntutan dari mula hingga selesai termasuk urusan dengan panel workshop.</p></div>
-        </div>
-        <div class="faq-item">
-          <div class="faq-question" onclick="toggleFaq(this)">
-            Bolehkah saya mula pelaburan emas dengan modal kecil? <i class="fas fa-plus"></i>
-          </div>
-          <div class="faq-answer"><p>Ya, anda boleh mula pelaburan emas dengan modal serendah RM100 melalui akaun pelaburan emas. Kami menasihati kaedah Dollar Cost Averaging (DCA) iaitu membeli secara berkala untuk mengurangkan risiko turun naik harga.</p></div>
-        </div>
-        <div class="faq-item">
-          <div class="faq-question" onclick="toggleFaq(this)">
-            Mengapa saya perlu membuat wasiat sekarang? <i class="fas fa-plus"></i>
-          </div>
-          <div class="faq-answer"><p>Tanpa wasiat, harta anda akan dibahagikan mengikut undang-undang faraid (Islam) atau akta pembahagian (bukan Islam), yang mungkin tidak selaras dengan kehendak anda. Proses tanpa wasiat juga boleh mengambil masa bertahun-tahun dan menyebabkan konflik keluarga.</p></div>
-        </div>
-        <div class="faq-item">
-          <div class="faq-question" onclick="toggleFaq(this)">
-            Adakah perkhidmatan konsultasi percuma? <i class="fas fa-plus"></i>
-          </div>
-          <div class="faq-answer"><p>Ya! Kami menawarkan konsultasi percuma tanpa obligasi untuk semua bakal pelanggan baharu. Hubungi kami melalui WhatsApp atau borang pertanyaan di bawah untuk menempah sesi konsultasi anda.</p></div>
-        </div>
-      </div>
-
-      <div data-aos="fade-left">
-        <div class="faq-right-card">
-          <h3>Masih ada soalan?</h3>
-          <p>Hubungi pakar kami sekarang untuk mendapatkan jawapan dan nasihat yang paling tepat untuk keperluan anda.</p>
-          <div class="contact-options">
-            <div class="contact-opt">
-              <div class="contact-opt-icon"><i class="fab fa-whatsapp"></i></div>
-              <div>
-                <div class="contact-opt-label">WhatsApp</div>
-                <div class="contact-opt-value">+60 11-XXXX XXXX</div>
-              </div>
-            </div>
-            <div class="contact-opt">
-              <div class="contact-opt-icon"><i class="fas fa-phone"></i></div>
-              <div>
-                <div class="contact-opt-label">Telefon</div>
-                <div class="contact-opt-value">+60 3-XXXX XXXX</div>
-              </div>
-            </div>
-            <div class="contact-opt">
-              <div class="contact-opt-icon"><i class="fas fa-envelope"></i></div>
-              <div>
-                <div class="contact-opt-label">E-mel</div>
-                <div class="contact-opt-value">info@asiashieldfs.com.my</div>
-              </div>
-            </div>
-            <div class="contact-opt">
-              <div class="contact-opt-icon"><i class="fas fa-map-marker-alt"></i></div>
-              <div>
-                <div class="contact-opt-label">Pejabat</div>
-                <div class="contact-opt-value">Kuala Lumpur, Malaysia</div>
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
-    </div>
-  </div>
-</section> -->
 
 <!-- CTA BANNER -->
 <div class="cta-banner">
@@ -1265,100 +1184,6 @@
     </div>
   </div>
 </div>
-
-<!-- CONTACT
-<section class="contact" id="hubungi">
-  <div class="container">
-    <div class="contact-grid">
-      <div class="contact-info" data-aos="fade-right">
-        <div class="section-tag">Hubungi Kami</div>
-        <h2 class="section-title" style="color:var(--white);">Bercakap Dengan <span>Pakar Kami</span></h2>
-        <div class="gold-line"></div>
-        <p>Kami sedia membantu anda membuat keputusan kewangan yang tepat. Hubungi kami hari ini untuk konsultasi percuma tanpa sebarang obligasi.</p>
-        <div class="contact-details">
-          <div class="contact-detail">
-            <div class="contact-detail-icon"><i class="fab fa-whatsapp"></i></div>
-            <div>
-              <div class="contact-detail-label">WhatsApp (Utama)</div>
-              <div class="contact-detail-value">+60 11-XXXX XXXX</div>
-            </div>
-          </div>
-          <div class="contact-detail">
-            <div class="contact-detail-icon"><i class="fas fa-phone"></i></div>
-            <div>
-              <div class="contact-detail-label">Telefon Pejabat</div>
-              <div class="contact-detail-value">+60 3-XXXX XXXX</div>
-            </div>
-          </div>
-          <div class="contact-detail">
-            <div class="contact-detail-icon"><i class="fas fa-envelope"></i></div>
-            <div>
-              <div class="contact-detail-label">E-mel Rasmi</div>
-              <div class="contact-detail-value">info@asiashieldfs.com.my</div>
-            </div>
-          </div>
-          <div class="contact-detail">
-            <div class="contact-detail-icon"><i class="fas fa-clock"></i></div>
-            <div>
-              <div class="contact-detail-label">Waktu Operasi</div>
-              <div class="contact-detail-value">Isnin – Jumaat: 9:00 am – 6:00 pm<br><span style="font-size:13px;color:rgba(255,255,255,0.5);">Sabtu: 9:00 am – 1:00 pm</span></div>
-            </div>
-          </div>
-          <div class="contact-detail">
-            <div class="contact-detail-icon"><i class="fas fa-map-marker-alt"></i></div>
-            <div>
-              <div class="contact-detail-label">Alamat Pejabat</div>
-              <div class="contact-detail-value">No. XX, Jalan XXX,<br>XXXXX Kuala Lumpur, Malaysia</div>
-            </div>
-          </div>
-        </div>
-      </div>
-
-      <div data-aos="fade-left">
-        <div class="contact-form">
-          <div class="form-title">Hantar Pertanyaan</div>
-          <div class="form-sub">Isi borang di bawah dan kami akan menghubungi anda dalam masa 24 jam.</div>
-          <div class="form-grid">
-            <div class="form-group">
-              <label>Nama Penuh *</label>
-              <input type="text" placeholder="Nama anda" />
-            </div>
-            <div class="form-group">
-              <label>No. Telefon *</label>
-              <input type="tel" placeholder="+60 1X-XXX XXXX" />
-            </div>
-            <div class="form-group">
-              <label>Alamat E-mel</label>
-              <input type="email" placeholder="email@contoh.com" />
-            </div>
-            <div class="form-group">
-              <label>Jenis Perkhidmatan *</label>
-              <select>
-                <option value="">Pilih perkhidmatan...</option>
-                <option>Insurans Kenderaan – Etiqa</option>
-                <option>Insurans Kenderaan – Pacific & Orient</option>
-                <option>Insurans Kenderaan – Zurich</option>
-                <option>Takaful Kenderaan</option>
-                <option>Takaful Perubatan / Keluarga</option>
-                <option>Pelaburan Emas</option>
-                <option>Pelaburan Perak</option>
-                <option>Pengurusan Harta & Pusaka</option>
-                <option>Wasiat Islam</option>
-                <option>Lain-lain</option>
-              </select>
-            </div>
-            <div class="form-group full">
-              <label>Mesej / Pertanyaan</label>
-              <textarea placeholder="Ceritakan keperluan anda..."></textarea>
-            </div>
-          </div>
-          <button class="form-submit" onclick="submitForm()"><i class="fas fa-paper-plane"></i> &nbsp;Hantar Pertanyaan Sekarang</button>
-          <div class="form-note">🔒 Maklumat anda adalah sulit dan tidak akan dikongsi kepada pihak ketiga.</div>
-        </div>
-      </div>
-    </div>
-  </div>
-</section> -->
 
 <!-- FOOTER -->
 <footer class="footer">
@@ -1413,17 +1238,12 @@
       </div>
     </div>
   </div>
-  
 
   <div class="footer-bottom">
     <div class="container">
       <div class="footer-bottom-inner">
         <div class="footer-copy">since 2001</div>
-        <div class="footer-bottom-links">
-          <!-- <a href="#" class="footer-bottom-link">Dasar Privasi</a>
-          <a href="#" class="footer-bottom-link">Terma & Syarat</a>
-          <a href="#" class="footer-bottom-link">Peta Laman</a> -->
-        </div>
+        <div class="footer-bottom-links"></div>
         <div class="footer-cert"><i class="fas fa-certificate"></i> Berlesen di bawah Bank Negara Malaysia</div>
       </div>
     </div>
@@ -1474,19 +1294,26 @@
 
   // Scroll to contact
   function scrollToContact() {
-    document.getElementById('hubungi').scrollIntoView({ behavior: 'smooth' });
+    const el = document.getElementById('hubungi');
+    if (el) el.scrollIntoView({ behavior: 'smooth' });
   }
 
-  // Form submit
-  function submitForm() {
-    const btn = document.querySelector('.form-submit');
-    btn.innerHTML = '<i class="fas fa-check"></i> &nbsp;Pertanyaan Dihantar!';
-    btn.style.background = '#4CAF50';
-    setTimeout(() => {
-      btn.innerHTML = '<i class="fas fa-paper-plane"></i> &nbsp;Hantar Pertanyaan Sekarang';
-      btn.style.background = '';
-    }, 3000);
+  // Fix takaful inner grid on mobile
+  function fixTakafulGrid() {
+    const takafulInner = document.querySelector('#takaful > div > div');
+    if (!takafulInner) return;
+    if (window.innerWidth <= 768) {
+      takafulInner.style.gridTemplateColumns = '1fr';
+      takafulInner.style.padding = '28px 20px';
+      takafulInner.style.gap = '24px';
+    } else {
+      takafulInner.style.gridTemplateColumns = '1fr 1fr';
+      takafulInner.style.padding = '40px 48px';
+      takafulInner.style.gap = '48px';
+    }
   }
+  fixTakafulGrid();
+  window.addEventListener('resize', fixTakafulGrid);
 
   // Gold price ticker animation
   let goldBase = 390;
